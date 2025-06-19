@@ -1,7 +1,7 @@
 Locales = {}
 
 function _L(key)
-    local lang = GetConvar("illenium-appearance:locale", "de")
+    local lang = GetConvar("illenium-appearance:locale", "en")
     if not Locales[lang] then
         lang = "en"
     end
