@@ -103,28 +103,28 @@ Config.Blips = {
         Sprite = 366,
         Color = 47,
         Scale = 0.7,
-        Name = "Kleidungsgeschäft",
+        Name = "Clothing Store",
     },
     ["barber"] = {
         Show = true,
         Sprite = 71,
         Color = 0,
         Scale = 0.7,
-        Name = "Friseur",
+        Name = "Barber",
     },
     ["tattoo"] = {
         Show = true,
         Sprite = 75,
         Color = 4,
         Scale = 0.7,
-        Name = "Tattoo-Studio",
+        Name = "Tattoo Shop",
     },
     ["surgeon"] = {
         Show = true,
         Sprite = 102,
         Color = 4,
         Scale = 0.7,
-        Name = "Schönheitschirurg",
+        Name = "Plastic Surgeon",
     }
 }
 
@@ -133,42 +133,42 @@ Config.TargetConfig = {
         model = "s_f_m_shop_high",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-tshirt",
-        label = "Kleidung ansehen",
+        label = "Open Clothing Store",
         distance = 3
     },
     ["barber"] = {
         model = "s_m_m_hairdress_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-scissors",
-        label = "Friseur betreten",
+        label = "Open Barber Shop",
         distance = 3
     },
     ["tattoo"] = {
         model = "u_m_y_tattoo_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-pen",
-        label = "Tattoo-Studio betreten",
+        label = "Open Tattoo Shop",
         distance = 3
     },
     ["surgeon"] = {
         model = "s_m_m_doctor_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-scalpel",
-        label = "Chirurg betreten",
+        label = "Open Surgeon",
         distance = 3
     },
     ["clothingroom"] = {
         model = "mp_g_m_pros_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-sign-in-alt",
-        label = "Job-/Gangkleidung öffnen",
+        label = "Open Job / Gang Clothes Menu",
         distance = 3
     },
     ["playeroutfitroom"] = {
         model = "mp_g_m_pros_01",
         scenario = "WORLD_HUMAN_STAND_MOBILE",
         icon = "fas fa-sign-in-alt",
-        label = "Outfit-Menü öffnen",
+        label = "Open Outfits Menu",
         distance = 3
     },
 }
