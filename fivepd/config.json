@@ -1,39 +1,68 @@
 {
-  "db": "sqlite",
+  "enable-callouts": true,
+  "debug": false,
+  "unitNumber": {
+    "enabled": true,
+    "useAutomaticUnitNumbering": false,
+    "defaultUnitNumber": 1
+  },
+  "startAsDriver": true,
+  "autoDuty": true,
+  "garage": {
+    "useGarage": false,
+    "locations": []
+  },
+  "licensePlateCheck": true,
+  "driverLicenseCheck": true,
+  "useDispatchSystem": true,
+  "useRankingSystem": true,
+  "allowNonLeoToJoin": false,
+  "dispatchAIBackup": true,
+  "canCancelBackup": true,
+  "randomizeCallouts": true,
+  "punishmentSystem": true,
+  "allowCitations": true,
+  "autoDutyOnJoin": true,
+  "commands": {
+    "duty": "duty",
+    "endCallout": "endcallout"
+  },
+  "pursuitSystem": {
+    "enabled": true,
+    "autoEnd": true,
+    "endTimeInMinutes": 10
+  },
   "database": {
-    "username": "localhost",
-    "password": "54339",
+    "use-mysql": true,
     "host": "127.0.0.1",
     "port": 3306,
+    "user": "root",
+    "password": "",
     "database": "fivepd"
   },
-  "stationBlips": true,
-  "maxReportLength": 1000,
-  "maxFine": 1000000,
-  "maxFinePoint": 100,
-  "maxCallLength": 125,
-  "maxOfficerNameLength": 125,
-  "maxAINameLength": 50,
-  "maxNumberOfInvolvedOfficers": 32,
-  "maxNumberOfSuspects": 32,
-  "maxNumberOfVictims": 32,
-  "maxViolationCount": 32,
-  "isSignatureEnabled": true,
-  "maxSignatureSize": 10.0,
-  "maxStreetNameLength": 25,
-  "maxCityNameLength": 30,
-  "maxZIPLength": 10,
-  "maxChargeCount": 9999,
-  "maxReportCount": -1,
-  "maxCitationCount": 9999,
-  "minCallsignLength": 1,
-  "maxCallsignLength": 15,
-  "adminCode": "admin",
-  "discord": {
-    "enable": true,
-    "token": "MTI2NTI4NTIxODMwNzE0NTcyOA.GanMII.OG-fCiOBI3NOFpxX1TIhRJ_R6EqNR7VXQRUvRA"
+  "backup": {
+    "useAI": true,
+    "requestCooldownSeconds": 60
   },
-  "dutyNotification": true,
-  "observation": true,
-  "allowlist": false
+  "ticketSystem": {
+    "useTicketingSystem": true,
+    "maxFine": 10000,
+    "allowArrestForUnpaidFines": true
+  },
+  "logging": {
+    "logPlayerActions": true,
+    "logCallouts": true
+  },
+  "radio": {
+    "useRadio": true,
+    "defaultFrequency": 1
+  },
+  "deathSystem": {
+    "knockedOutTimeInSeconds": 60,
+    "respawnAtHospital": true
+  },
+  "locationSystem": {
+    "showStreetName": true,
+    "showPostal": true
+  }
 }

@@ -1,40 +1,40 @@
 [
 	{
-		"title": "Normal questions",
+		"title": "Normale Fragen",
 		"questions": [
 			{
-				"question": "Have you been drinking recently?",
-				"answers": ["Yes.", "No.", "Of course I did."]
+				"question": "Haben Sie kürzlich Alkohol getrunken?",
+				"answers": ["Ja.", "Nein.", "Natürlich habe ich das."]
 			},
 			{
-				"question": "Where are you heading to?",
-				"answers": ["I'm going home.", "It's my own business..."]
+				"question": "Wohin sind Sie unterwegs?",
+				"answers": ["Ich fahre nach Hause.", "Das geht nur mich etwas an..."]
 			}
 		]
 	},
 	{
-		"title": "Traffic stop questions",
+		"title": "Verkehrskontrollfragen",
 		"questions": [
 			{
-				"question": "Hello, how are you?",
-				"answers": ["Hey!", "Hello officer!", "Good day sir!"]
+				"question": "Hallo, wie geht es Ihnen?",
+				"answers": ["Hey!", "Hallo, Herr Polizist!", "Guten Tag, mein Herr!"]
 			},
 			{
-				"question": "Hello",
-				"answers": ["Hey!", "Hello officer!", "Good day sir!"]
+				"question": "Hallo",
+				"answers": ["Hey!", "Hallo, Herr Polizist!", "Guten Tag, mein Herr!"]
 			}
 		]
 	},
 	{
-		"title": "Documentation questions",
+		"title": "Fragen zu Dokumenten",
 		"questions": [
 			{
-				"question": "Do you have your drivers license with you?",
-				"answers": ["Yes.", "No.", "No, I left it at home."]
+				"question": "Haben Sie Ihren Führerschein dabei?",
+				"answers": ["Ja.", "Nein.", "Nein, ich habe ihn zu Hause vergessen."]
 			},
 			{
-				"question": "Do you have a hunting license?",
-				"answers": ["Nope.", "Yes sir yes."]
+				"question": "Haben Sie einen Jagdschein?",
+				"answers": ["Nein.", "Ja, Herr Officer."]
 			}
 		]
 	}
