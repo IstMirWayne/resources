@@ -1,63 +1,14 @@
 {
-  "enable-callouts": true,
-  "debug": false,
-  "unitNumber": {
-    "enabled": true,
-    "useAutomaticUnitNumbering": false,
-    "defaultUnitNumber": 1
+  "db": "sqlite",
+  "database": {
+    "username": "root",
+    "password": "",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "database": "fivepd"
   },
-  "startAsDriver": true,
-  "autoDuty": true,
-  "garage": {
-    "useGarage": false,
-    "locations": []
-  },
-  "licensePlateCheck": true,
-  "driverLicenseCheck": true,
-  "useDispatchSystem": true,
-  "useRankingSystem": true,
-  "allowNonLeoToJoin": false,
-  "dispatchAIBackup": true,
-  "canCancelBackup": true,
-  "randomizeCallouts": true,
-  "punishmentSystem": true,
-  "allowCitations": true,
-  "autoDutyOnJoin": true,
-  "commands": {
-    "duty": "duty",
-    "endCallout": "endcallout"
-  },
-  "pursuitSystem": {
-    "enabled": true,
-    "autoEnd": true,
-    "endTimeInMinutes": 10
-  },
-  "backup": {
-    "useAI": true,
-    "requestCooldownSeconds": 60
-  },
-  "ticketSystem": {
-    "useTicketingSystem": true,
-    "maxFine": 10000,
-    "allowArrestForUnpaidFines": true
-  },
-  "logging": {
-    "logPlayerActions": true,
-    "logCallouts": true
-  },
-  "radio": {
-    "useRadio": true,
-    "defaultFrequency": 1
-  },
-  "deathSystem": {
-    "knockedOutTimeInSeconds": 60,
-    "respawnAtHospital": true
-  },
-  "locationSystem": {
-    "showStreetName": true,
-    "showPostal": true
-  },
-  "adminCode": "admin",
+  "stationBlips": true,
+  "maxReportLength": 1000,
   "maxFine": 1000000,
   "maxFinePoint": 100,
   "maxCallLength": 125,
@@ -67,7 +18,6 @@
   "maxNumberOfSuspects": 32,
   "maxNumberOfVictims": 32,
   "maxViolationCount": 32,
-  "maxReportLength": 1000,
   "isSignatureEnabled": true,
   "maxSignatureSize": 10.0,
   "maxStreetNameLength": 25,
@@ -78,16 +28,12 @@
   "maxCitationCount": 100,
   "minCallsignLength": 1,
   "maxCallsignLength": 15,
-  "allowlist": false,
-  "observation": false,
-  "dutyNotification": false,
-  "discord": null,
-  "db": {
-    "type": "mysql",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "",
-    "database": "fivepd"
-  }
+  "adminCode": "admin",
+  "discord": {
+    "enable": true,
+    "token": ""
+  },
+  "dutyNotification": true,
+  "observation": true,
+  "allowlist": false
 }
