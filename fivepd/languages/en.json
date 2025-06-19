@@ -1,233 +1,233 @@
 {
-    "name":"English",
-    "CalloutMenu":{
-		"title":"Callout Menu",
-		"description":"Choose an option",
-        "backup_menu":{
-            "title":"Backup Menu",
-			"description":"Call for backup",
-			"buttons":{
-				"code1":{
-					"title":"Code 1",
-					"description":"Call for code 1 backup"
-				},
-				"code2":{
-					"title":"Code 2",
-					"description":"Call for code 2 backup"
-				},
-				"code3":{
-					"title":"Code 3",
-					"description":"Call for code 3 backup"
-				},
-				"code99":{
-					"title":"Code 99",
-					"description":"Call for code 99 backup"
-				},
-				"cancel_backup":{
-					"title":"Cancel backup",
-					"description":"Cancel your backup request"
-				}
-			}
-        },
-        "add_nearby":{
-            "title":"Add nearby player",
-            "description":"Add the closest player to your callout (must be in the same department)"
-        },
-        "disable_callouts":{
-            "title":"Disable callouts",
-            "description":"Disable receiving callouts"
-        },
-        "debug_menu":{
-            "title":"~y~Debug menu",
-            "description":"Debug menu",
-            "submenu":{
-                "force_callouts":{
-                    "title":"Force callouts",
-                    "description":"Force a callout"
+    "name": "English",
+    "CalloutMenu": {
+        "title": "Melde-Menü",
+        "description": "Wähle eine Option",
+        "backup_menu": {
+            "title": "Backup-Menü",
+            "description": "Backup anfordern",
+            "buttons": {
+                "code1": {
+                    "title": "Code 1",
+                    "description": "Code 1 Backup anfordern"
                 },
-                "toggle_callouts":{
-                    "title":"Enable/Disable callouts",
-                    "description":"Enable/Disable a callout"
+                "code2": {
+                    "title": "Code 2",
+                    "description": "Code 2 Backup anfordern"
+                },
+                "code3": {
+                    "title": "Code 3",
+                    "description": "Code 3 Backup anfordern"
+                },
+                "code99": {
+                    "title": "Code 99",
+                    "description": "Code 99 Backup anfordern"
+                },
+                "cancel_backup": {
+                    "title": "Backup abbrechen",
+                    "description": "Backup-Anforderung abbrechen"
                 }
             }
-		},
-		"code4":{
-			"title":"[Callout] Code ~g~4",
-            "description":"Complete the callout"
-		},
-		"cancel_assistance":{
-			"title":"~r~Cancel assistance",
-            "description":"Stop responding to the backup request"
-		}
+        },
+        "add_nearby": {
+            "title": "Nahegelegenen Spieler hinzufügen",
+            "description": "Füge den nächstgelegenen Spieler zu deiner Meldung hinzu (muss in derselben Abteilung sein)"
+        },
+        "disable_callouts": {
+            "title": "Meldungen deaktivieren",
+            "description": "Meldungen nicht mehr empfangen"
+        },
+        "debug_menu": {
+            "title": "~y~Debug-Menü",
+            "description": "Debug-Menü",
+            "submenu": {
+                "force_callouts": {
+                    "title": "Meldung erzwingen",
+                    "description": "Eine Meldung erzwingen"
+                },
+                "toggle_callouts": {
+                    "title": "Meldungen aktivieren/deaktivieren",
+                    "description": "Eine Meldung aktivieren oder deaktivieren"
+                }
+            }
+        },
+        "code4": {
+            "title": "[Meldung] Code ~g~4",
+            "description": "Meldung abschließen"
+        },
+        "cancel_assistance": {
+            "title": "~r~Hilfe abbrechen",
+            "description": "Reaktion auf Backup-Anfrage abbrechen"
+        }
     },
-	"MainMenu": {
-		"title": "Main menu",
-		"subtitle": "Choose a submenu"
-	},
+    "MainMenu": {
+        "title": "Hauptmenü",
+        "subtitle": "Wähle ein Untermenü"
+    },
     "DutyMenu": {
-		"title": "Duty menu",
-		"subtitle": "Choose an option",
-		"duty": "On duty",
-		"engine": "Keep engine running",
-		"cc": {
-			"title": "Toggle cruise control",
-			"description": "By enabling this option you can use CC by pressing the set keybind for it. Default is 'B'."
-		},
-		"vehicleSpawn": "Spawn vehicle",
-		"loadout": "Get loadout",
-		"refill": "Refill health & armor",
-		"tp": "Teleport to station",
-		"OptionsMenu": {
-			"title": "Options menu",
-			"subtitle": "Choose an option",
-			"lang": "Change language",
-			"blips": "Toggle blips",
-			"patrolCarBlip": "Toggle patrol car blip",
-			"menupos": {
-				"title": "Toggle menu position",
-				"description": "Checked: right~n~Unchecked: left~n~~n~It's not working on aspect ratios 17:9 and 21:9!"
-			},
-			"showNotifications": {
-				"title": "Toggle notifications",
-				"description": "Some notifications are reasource heavy, so if you have a lower spec PC you can turn them off."
-			},
-			"observation": "Toggle ped observation"
-		}
-	},
-	"SceneMenu": {
-		"title": "Scene menu",
-		"subtitle": "Choose a submenu",
-		"ObjectMenu": {
-			"title": "Object menu",
-			"subtitle": "Choose an option",
-			"spawn": "Spawn object",
-			"delete": "Delete all objects you've placed",
-			"deletePrevious": "Delete the previous object you've placed"
-		},
-		"SpeedZoneMenu": {
-			"title": "Speed zone menu",
-			"subtitle": "Choose an option",
-			"speed": "Select speed",
-			"radius": "Change radius",
-			"place": "Place speedzone",
-			"remove": "Remove speedzone",
-			"go": "Let vehicles go",
-			"removePlayer": "Remove player's speed zone"
-		}
-	},
-	"DispatchMenu": {
-		"title": "Dispatch menu",
-		"subtitle": "Choose an option",
-		"license": "Check license",
-		"plate": "Check license plate",
-		"transport": {
-			"request": "Request prison transport",
-			"cancel": "Cancel prison transport"
-		},
-		"ems": {
-			"request": "Request ambulance",
-			"cancel": "Cancel ambulance"
-		},
-		"fd": {
-			"request": "Request fire department",
-			"cancel": "Cancel fire department"
-		},
-		"coroner": {
-			"request": "Request coroner",
-			"cancel": "Cancel coroner"
-		},
-		"towTruck": {
-			"request": "Request tow truck",
-			"cancel": "Cancel tow truck"
-		},
-		"animalControl": {
-			"request": "Request animal control",
-			"cancel": "Cancel animal control"
-		},
-		"mechanic": {
-			"request": "Request mechanic",
-			"cancel": "Cancel mechanic"
-		},
-		"airAmbulance": {
-			"request": "Request air ambulance",
-			"cancel": "Cancel air ambulance"
-		},
-		"taxi": {
-			"request": "Request taxi",
-			"cancel": "Cancel taxi"
-		}
-	},
-	"PedVehicleMenu": {
-		"title": "Ped seat menu",
-		"subtitle": "Choose an option",
-		"left": "Left rear put into/order out",
-		"right": "Right rear put into/order out"
-	},
-	"TrafficStopMenu": {
-		"title": "Traffic stop menu",
-		"subtitle": "Choose an option",
-		"go": "Free to go",
-		"breathalyzer": "Breathalyzer test",
-		"drugswab": "Drugswab test",
-		"interactWith": "Interact with",
-		"orderOut": {
-			"title": "Order out of vehicle",
-			"occupants": ["All", "Driver", "Front right", "Back left", "Back right"]
-		}
-	},
-	"TrafficStopPositionMenu": {
-		"title": "Traffic stop position",
-		"subtitle": "Choose an option",
-		"follow": "Enable follow",
-		"mimic": "Enable mimic",
-		"marker": "Enable go to marker",
-		"cancel": "Cancel positioning"
-	},
-	"PedCheckMenu": {
-		"title": "Ped stop menu",
-		"subtitle": "Choose an option",
-		"license": "Ask for license",
-		"question": "Ask questions",
-		"licenses": [
-			"Driving",
-			"Hunting",
-			"Fishing",
-			"Weapon"
-		],
-		"breathalyzer": "Breathalyzer test",
-		"drugswab": "Drugswab test",
-		"move": {
-			"title": "Move ped",
-			"types": ["Follow me", "Grab ped"]
-		},
-		"search": {
-			"title": "Search",
-			"types": ["Ped", "Vehicle"]
-		},
-		"cancelMove": {
-			"title": "Cancel move",
-			"description": "Cancel following or grabbing."
-		},
-		"cuff": "Cuff ped",
-		"uncuff": "Uncuff ped",
-		"dismiss": "Dismiss ped"
-	},
-	"AdminMenu": {
-		"title": "Admin menu",
-		"subtitle": "Choose an option",
-		"garageMenu": {
-			"title": "Garages",
-			"subtitle": "Choose an option",
-			"respawnAll": "Respawn all garages",
-			"respawnOne": "Respawn garage"
-		},
-		"devMenu": {
-			"title": "Development tools",
-			"subtitle": "Choose an option",
-			"save": "Save current position",
-			"heading": "Add heading to position",
-			"model": "Add ped model to position",
-			"change": "Change ped model",
-		}
-	}
+        "title": "Dienst-Menü",
+        "subtitle": "Wähle eine Option",
+        "duty": "Dienst antreten",
+        "engine": "Motor laufen lassen",
+        "cc": {
+            "title": "Tempomat umschalten",
+            "description": "Mit dieser Option kannst du den Tempomat mit der festgelegten Taste nutzen (Standard: 'B')."
+        },
+        "vehicleSpawn": "Fahrzeug spawnen",
+        "loadout": "Ausrüstung erhalten",
+        "refill": "Gesundheit & Rüstung auffüllen",
+        "tp": "Zur Station teleportieren",
+        "OptionsMenu": {
+            "title": "Optionen-Menü",
+            "subtitle": "Wähle eine Option",
+            "lang": "Sprache ändern",
+            "blips": "Blips umschalten",
+            "patrolCarBlip": "Streifenwagen-Blip umschalten",
+            "menupos": {
+                "title": "Menüposition umschalten",
+                "description": "Aktiviert: rechts~n~Deaktiviert: links~n~~n~Funktioniert nicht bei Seitenverhältnissen 17:9 und 21:9!"
+            },
+            "showNotifications": {
+                "title": "Benachrichtigungen umschalten",
+                "description": "Einige Benachrichtigungen beanspruchen viele Ressourcen – bei schwächeren PCs empfiehlt sich das Deaktivieren."
+            },
+            "observation": "Fußgänger-Beobachtung umschalten"
+        }
+    },
+    "SceneMenu": {
+        "title": "Szenen-Menü",
+        "subtitle": "Wähle ein Untermenü",
+        "ObjectMenu": {
+            "title": "Objekt-Menü",
+            "subtitle": "Wähle eine Option",
+            "spawn": "Objekt spawnen",
+            "delete": "Alle platzierten Objekte löschen",
+            "deletePrevious": "Vorheriges Objekt löschen"
+        },
+        "SpeedZoneMenu": {
+            "title": "Geschwindigkeitszonen-Menü",
+            "subtitle": "Wähle eine Option",
+            "speed": "Geschwindigkeit wählen",
+            "radius": "Radius ändern",
+            "place": "Geschwindigkeitszone platzieren",
+            "remove": "Geschwindigkeitszone entfernen",
+            "go": "Fahrzeuge freigeben",
+            "removePlayer": "Spieler-Geschwindigkeitszone entfernen"
+        }
+    },
+    "DispatchMenu": {
+        "title": "Leitstellen-Menü",
+        "subtitle": "Wähle eine Option",
+        "license": "Führerschein prüfen",
+        "plate": "Kennzeichen prüfen",
+        "transport": {
+            "request": "Gefangenentransport anfordern",
+            "cancel": "Gefangenentransport abbrechen"
+        },
+        "ems": {
+            "request": "Krankenwagen anfordern",
+            "cancel": "Krankenwagen abbrechen"
+        },
+        "fd": {
+            "request": "Feuerwehr anfordern",
+            "cancel": "Feuerwehr abbrechen"
+        },
+        "coroner": {
+            "request": "Leichenbeschauer anfordern",
+            "cancel": "Leichenbeschauer abbrechen"
+        },
+        "towTruck": {
+            "request": "Abschleppwagen anfordern",
+            "cancel": "Abschleppwagen abbrechen"
+        },
+        "animalControl": {
+            "request": "Tierschutz anfordern",
+            "cancel": "Tierschutz abbrechen"
+        },
+        "mechanic": {
+            "request": "Mechaniker anfordern",
+            "cancel": "Mechaniker abbrechen"
+        },
+        "airAmbulance": {
+            "request": "Luftrettung anfordern",
+            "cancel": "Luftrettung abbrechen"
+        },
+        "taxi": {
+            "request": "Taxi anfordern",
+            "cancel": "Taxi abbrechen"
+        }
+    },
+    "PedVehicleMenu": {
+        "title": "Fußgänger-Sitzmenü",
+        "subtitle": "Wähle eine Option",
+        "left": "Hinten links rein/raus",
+        "right": "Hinten rechts rein/raus"
+    },
+    "TrafficStopMenu": {
+        "title": "Verkehrskontrollen-Menü",
+        "subtitle": "Wähle eine Option",
+        "go": "Frei lassen",
+        "breathalyzer": "Alkoholtest",
+        "drugswab": "Drogentest",
+        "interactWith": "Interagiere mit",
+        "orderOut": {
+            "title": "Aus dem Fahrzeug holen",
+            "occupants": ["Alle", "Fahrer", "Vorne rechts", "Hinten links", "Hinten rechts"]
+        }
+    },
+    "TrafficStopPositionMenu": {
+        "title": "Position bei Verkehrskontrolle",
+        "subtitle": "Wähle eine Option",
+        "follow": "Folgen aktivieren",
+        "mimic": "Mimik aktivieren",
+        "marker": "Zum Marker fahren aktivieren",
+        "cancel": "Positionierung abbrechen"
+    },
+    "PedCheckMenu": {
+        "title": "Fußgänger-Check-Menü",
+        "subtitle": "Wähle eine Option",
+        "license": "Nach Ausweis fragen",
+        "question": "Fragen stellen",
+        "licenses": [
+            "Fahr-Erlaubnis",
+            "Jagd-Erlaubnis",
+            "Angel-Erlaubnis",
+            "Waffen-Erlaubnis"
+        ],
+        "breathalyzer": "Alkoholtest",
+        "drugswab": "Drogentest",
+        "move": {
+            "title": "Fußgänger bewegen",
+            "types": ["Folge mir", "Fußgänger greifen"]
+        },
+        "search": {
+            "title": "Durchsuchen",
+            "types": ["Fußgänger", "Fahrzeug"]
+        },
+        "cancelMove": {
+            "title": "Bewegung abbrechen",
+            "description": "Folgen oder Greifen beenden"
+        },
+        "cuff": "Handschellen anlegen",
+        "uncuff": "Handschellen abnehmen",
+        "dismiss": "Fußgänger entlassen"
+    },
+    "AdminMenu": {
+        "title": "Admin-Menü",
+        "subtitle": "Wähle eine Option",
+        "garageMenu": {
+            "title": "Garagen",
+            "subtitle": "Wähle eine Option",
+            "respawnAll": "Alle Garagen zurücksetzen",
+            "respawnOne": "Garage zurücksetzen"
+        },
+        "devMenu": {
+            "title": "Entwickler-Tools",
+            "subtitle": "Wähle eine Option",
+            "save": "Aktuelle Position speichern",
+            "heading": "Ausrichtung zur Position hinzufügen",
+            "model": "Ped-Modell zur Position hinzufügen",
+            "change": "Ped-Modell ändern"
+        }
+    }
 }
