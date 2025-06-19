@@ -32,14 +32,6 @@
     "autoEnd": true,
     "endTimeInMinutes": 10
   },
-  "database": {
-    "use-mysql": true,
-    "host": "127.0.0.1",
-    "port": 3306,
-    "user": "root",
-    "password": "",
-    "database": "fivepd"
-  },
   "backup": {
     "useAI": true,
     "requestCooldownSeconds": 60
@@ -64,5 +56,38 @@
   "locationSystem": {
     "showStreetName": true,
     "showPostal": true
+  },
+  "adminCode": "admin",
+  "maxFine": 1000000,
+  "maxFinePoint": 100,
+  "maxCallLength": 125,
+  "maxOfficerNameLength": 125,
+  "maxAINameLength": 50,
+  "maxNumberOfInvolvedOfficers": 32,
+  "maxNumberOfSuspects": 32,
+  "maxNumberOfVictims": 32,
+  "maxViolationCount": 32,
+  "maxReportLength": 1000,
+  "isSignatureEnabled": true,
+  "maxSignatureSize": 10.0,
+  "maxStreetNameLength": 25,
+  "maxCityNameLength": 30,
+  "maxZIPLength": 10,
+  "maxChargeCount": 15,
+  "maxReportCount": 100,
+  "maxCitationCount": 100,
+  "minCallsignLength": 1,
+  "maxCallsignLength": 15,
+  "allowlist": false,
+  "observation": false,
+  "dutyNotification": false,
+  "discord": null,
+  "db": {
+    "type": "mysql",
+    "host": "127.0.0.1",
+    "port": 3306,
+    "user": "root",
+    "password": "",
+    "database": "fivepd"
   }
 }
