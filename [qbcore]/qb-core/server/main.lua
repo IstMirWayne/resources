@@ -47,3 +47,11 @@ local function GetSharedGangs()
     return QBShared.Gangs
 end
 exports('GetSharedGangs', GetSharedGangs)
+
+
+            -- Jobs Creator integration (jobs_creator)
+            RegisterNetEvent("jobs_creator:injectJobs", function(jobs)
+                if type(source) == "number" and source > 0 then return end
+                QBCore.Shared.Jobs = jobs
+            end)
+        
