@@ -244,8 +244,8 @@ Config.ShowMenu = {
 -------------------------------------------- Watermark hud --------------------------------------------
 Config.DisableWaterMarkTextAndLogo = true -- true - Disable watermark text and logo
 Config.UseWaterMarkText = true -- if true text will be shown | if  false logo will be shown
-Config.WaterMarkText1 = "CODEM" -- Top right server text
-Config.WaterMarkText2 = "SCRiPTS"  -- Top right server text
+Config.WaterMarkText1 = "CODE 3" -- Top right server text
+Config.WaterMarkText2 = "Roleplay"  -- Top right server text
 Config.WaterMarkLogo = "https://cdn.discordapp.com/attachments/862018783391252500/967359920703942686/Frame_303.png" -- Logo url
 Config.LogoWidth = "11.875rem"
 Config.LogoHeight = "3.313rem"
@@ -431,57 +431,57 @@ Config.RemoveStress = { -- You can set here amounts by your desire
 -------------------------------------------- Notifications --------------------------------------------
 
 Config.Notifications = { -- Notifications
-    ["stress_gained"] = {
-        message = 'Getting Stressed',
+     ["stress_gained"] = {
+        message = 'Du wirst gestresst',
         type = "error",
     },
     ["stress_relive"] = {
-        message =  'You Are Relaxing',
+        message = 'Du entspannst dich',
         type = "success",
     },
     ["took_off_seatbelt"] = {
         type = "error",
-        message = "You took off seatbelt.",
+        message = "Du hast den Sicherheitsgurt abgenommen.",
     },
     ["took_seatbelt"] = {
         type = "success",
-        message = "You took seatbelt.",
+        message = "Du hast den Sicherheitsgurt angelegt.",
     },
     ["cruise_actived"] = {
         type = "success",
-        message = "Cruise activated.",
+        message = "Tempomat aktiviert.",
     },
     ["cruise_disabled"] = {
         type = "error",
-        message = "Cruise disabled.",
+        message = "Tempomat deaktiviert.",
     },
     ["spam"] = {
         type = "error",
-        message = "Please wait for a few seconds.",
+        message = "Bitte warte ein paar Sekunden.",
     },
     ["engine_on"] = {
         type = "success",
-        message = "Engine is on.",
+        message = "Motor ist eingeschaltet.",
     },
     ["engine_off"] = {
         type = "success",
-        message = "Engine is off.",
+        message = "Motor ist ausgeschaltet.",
     },
     ["cant_install_nitro"] = {
         type = "error",
-        message = "You can't install nitro inside vehicle.",
+        message = "Du kannst Nitro nicht im Fahrzeug installieren.",
     },
     ["no_veh_nearby"] = {
         type = "error",
-        message = "No vehicle nearby.",
+        message = "Kein Fahrzeug in der Nähe.",
     },
     ["cash_display"] = {
         type = "success",
-        message = "You have $%s in your pocket.",
+        message = "Du hast $%s in der Tasche.",
     },
     ["bank_display"] = {
         type = "success",
-        message = "You have $%s in your bank.",
+        message = "Du hast $%s auf der Bank.",
     },
 }
 
