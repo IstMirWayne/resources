@@ -1,13 +1,13 @@
 Config                   = {}
-Config.Framework         = "qb"      -- esx, oldesx, qb, oldqb
+Config.Framework         = "esx"      -- esx, oldesx, qb, oldqb
 Config.SQL               = "oxmysql" -- oxmysql, ghmattimysql, mysql-async
 Config.EnableCamShake    = true
 Config.HiddenCoords      = vector4(-812.23, 182.54, 76.74, 156.5)
-Config.Thema             = "blue" -- orange , white , purple, blue, green , red
-Config.ServerLogo        = "https://i.ibb.co/1G9vFh60/code3logo.png"
+Config.Thema             = "red" -- orange , white , purple, blue, green , red
+Config.ServerLogo        = "https://r2.fivemanage.com/8Hb4twhFSbaNdR27bPGV4/m_logo.png"
 Config.DeleteCharacter   = true
-Config.Clothes           = "illenium-appearance" -- default, illenium-appearance, fivem-appearance default = codem-appearance
-Config.Inventory         = "codem-inventory" -- qb_inventory, esx_inventory, ox_inventory,  codem-inventory, qs_inventory 
+Config.Clothes           = "default" -- default, illenium-appearance, fivem-appearance default = codem-appearance
+Config.Inventory         = "esx_inventory" -- qb_inventory, esx_inventory, ox_inventory,  codem-inventory, qs_inventory 
 Config.UseQBApartments   = false -- for qb : If you want your player to spawn at qb apartments after character creation set this value to true, if not set it to false.
 Config.SpawnSelector     = false --for esx or qb : After clicking the "Continue" button from the Players UI, set this value to true if you want to use ESX's or QBCore's Spawn Selector, or false if you don't.
 Config.UseMSpawnSelector = true -- esx or qb : If you are using mSpawn Selector and want you to bring this resource after the mMulticharacter Remake resource set this value to true, if not set it to false.
