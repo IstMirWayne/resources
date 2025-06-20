@@ -3,7 +3,7 @@ Config.Framework         = "qb"      -- esx, oldesx, qb, oldqb
 Config.SQL               = "oxmysql" -- oxmysql, ghmattimysql, mysql-async
 Config.EnableCamShake    = true
 Config.HiddenCoords      = vector4(-812.23, 182.54, 76.74, 156.5)
-Config.Thema             = "red" -- orange , white , purple, blue, green , red
+Config.Thema             = "blue" -- orange , white , purple, blue, green , red
 Config.ServerLogo        = "https://r2.fivemanage.com/8Hb4twhFSbaNdR27bPGV4/m_logo.png"
 Config.DeleteCharacter   = true
 Config.Clothes           = "illenium-appearance" -- default, illenium-appearance, fivem-appearance default = codem-appearance
