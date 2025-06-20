@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FirstPersonAlternateData>
+    <alternates>
+        <Item>
+            <assetName>mp_m_freemode_01_tls_lspd/lowr_003_r</assetName>
+            <alternate value="1" />
+        </Item>
+    </alternates>
+</FirstPersonAlternateData>
