@@ -622,18 +622,16 @@ function QBCore.Player.GetFirstSlotByItem(items, itemName)
     return exports['codem-inventory']:GetFirstSlotByItem(items, itemName)
 end
 
-  function self.Functions.GetCardSlot(cardNumber, cardType)
-        local item = tostring(cardType):lower()
-        local slots = exports['codem-inventory']:GetSlotsByItem(self.PlayerData.items, item)
-        for _, slot in pairs(slots) do
-            if slot then
-                if self.PlayerData.items[slot].info.cardNumber == cardNumber then
-                    return slot
-                end
-            end
+self.Functions.GetCardSlot = function(cardNumber, cardType)
+    local item = tostring(cardType):lower()
+    local slots = exports['codem-inventory']:GetSlotsByItem(self.PlayerData.items, item)
+    for _, slot in pairs(slots) do
+        if slot and self.PlayerData.items[slot].info.cardNumber == cardNumber then
+            return slot
         end
-        return nil
     end
+    return nil
+end
 
 -- Util Functions
 
