@@ -98,7 +98,7 @@ Config.ATMModels = {
 -- ██╔══██╗██║██║░░░░░██║░░░░░██║██║╚████║██║░░╚██╗  ░╚═══██╗░░╚██╔╝░░░╚═══██╗░░░██║░░░██╔══╝░░██║╚██╔╝██║
 -- ██████╦╝██║███████╗███████╗██║██║░╚███║╚██████╔╝  ██████╔╝░░░██║░░░██████╔╝░░░██║░░░███████╗██║░╚═╝░██║
 -- ╚═════╝░╚═╝╚══════╝╚══════╝╚═╝╚═╝░░╚══╝░╚═════╝░  ╚═════╝░░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░░░░╚═╝
-Config.BillingSystem = true            -- true or false | Do true if you want to use the billing system. or false if you don't want to use the billing system.
+Config.BillingSystem = false            -- true or false | Do true if you want to use the billing system. or false if you don't want to use the billing system.
 Config.BillingScript = 'codem-billingv2' -- qbdefault - codem-billing - codem-billingv2 - okok - esxdefault
 Config.BillingJob = {
     ['mechanic'] = 'Mechanic',
@@ -118,7 +118,7 @@ end)
 -- ██║░░░░░██║░░██║██╔══██║██║╚████║░╚═══██╗██╔══╝░░░░░██║░░░░░░██║░░░██║██║╚████║██║░░╚██╗░╚═══██╗
 -- ███████╗╚█████╔╝██║░░██║██║░╚███║██████╔╝███████╗░░░██║░░░░░░██║░░░██║██║░╚███║╚██████╔╝██████╔╝
 -- ╚══════╝░╚════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝░░░╚═╝░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═════╝░
-Config.LoanUtilization = true   -- true or false |Do true if your players will use the credit system. or false if you want to use the loan system.
+Config.LoanUtilization = false   -- true or false |Do true if your players will use the credit system. or false if you want to use the loan system.
 Config.LoadDataWaitTime = 86400 -- 1 day
 Config.LoanData = {
     {
@@ -219,7 +219,7 @@ Config.LoanData = {
 -- ░╚═══██╗██╔══██║░╚████╔╝░██║██║╚████║██║░░╚██╗░╚═══██╗██╔══╝░░░░░██║░░░░░░██║░░░██║██║╚████║██║░░╚██╗░╚═══██╗
 -- ██████╔╝██║░░██║░░╚██╔╝░░██║██║░╚███║╚██████╔╝██████╔╝███████╗░░░██║░░░░░░██║░░░██║██║░╚███║╚██████╔╝██████╔╝
 -- ╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═════╝░╚══════╝░░░╚═╝░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═════╝░
-Config.SavingSytem = true -- true or false | Do true if you want to use the saving system. or false if you don't want to use the saving system.
+Config.SavingSytem = false -- true or false | Do true if you want to use the saving system. or false if you don't want to use the saving system.
 Config.SavingData = {
     {
         label = "Save 10% With Flecca",
@@ -311,7 +311,7 @@ Config.SavingData = {
 -- ██╔══██╗██║░░░██║░░░██║░░██╗██║░░██║██║██║╚████║  ░╚═══██╗░░╚██╔╝░░░╚═══██╗░░░██║░░░██╔══╝░░██║╚██╔╝██║
 -- ██████╦╝██║░░░██║░░░╚█████╔╝╚█████╔╝██║██║░╚███║  ██████╔╝░░░██║░░░██████╔╝░░░██║░░░███████╗██║░╚═╝░██║
 -- ╚═════╝░╚═╝░░░╚═╝░░░░╚════╝░░╚════╝░╚═╝╚═╝░░╚══╝  ╚═════╝░░░░╚═╝░░░╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░░░░╚═╝
-Config.BitcoinSystem = true
+Config.BitcoinSystem = false
 Config.BitcoinData = {
     {
         label = "Bitcoin",
@@ -386,7 +386,7 @@ Config.BitcoinData = {
 -- ░╚═══██╗██║░░██║██║░░██╗██║██╔══╝░░░░░██║░░░░░╚██╔╝░░░╚═══██╗██╔══╝░░░░░██║░░░░░░██║░░░██║██║╚████║██║░░╚██╗░╚═══██╗
 -- ██████╔╝╚█████╔╝╚█████╔╝██║███████╗░░░██║░░░░░░██║░░░██████╔╝███████╗░░░██║░░░░░░██║░░░██║██║░╚███║╚██████╔╝██████╔╝
 -- ╚═════╝░░╚════╝░░╚════╝░╚═╝╚══════╝░░░╚═╝░░░░░░╚═╝░░░╚═════╝░╚══════╝░░░╚═╝░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═════╝░
-Config.SocietySystem = true -- true or false | Do true if you want to use the society system. or false if you don't want to use the society system.
+Config.SocietySystem = false -- true or false | Do true if you want to use the society system. or false if you don't want to use the society system.
 Config.SocietyAccountJob = {
     { name = 'police',   grade = { 3, 4 }, label = 'LSPD' },
     { name = 'mechanic', grade = { 4 },    label = 'MECHANIC' }
