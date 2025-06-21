@@ -103,74 +103,75 @@ Config.Blips = {
         Sprite = 366,
         Color = 47,
         Scale = 0.7,
-        Name = "Clothing Store",
+        Name = "Kleidungsladen",
     },
     ["barber"] = {
         Show = true,
         Sprite = 71,
         Color = 0,
         Scale = 0.7,
-        Name = "Barber",
+        Name = "Friseur",
     },
     ["tattoo"] = {
         Show = true,
         Sprite = 75,
         Color = 4,
         Scale = 0.7,
-        Name = "Tattoo Shop",
+        Name = "Tätowierer",
     },
     ["surgeon"] = {
         Show = true,
         Sprite = 102,
         Color = 4,
         Scale = 0.7,
-        Name = "Plastic Surgeon",
+        Name = "Chirurg",
     }
 }
 
 Config.TargetConfig = {
-    ["clothing"] = {
-        model = "s_f_m_shop_high",
-        scenario = "WORLD_HUMAN_STAND_MOBILE",
-        icon = "fas fa-tshirt",
-        label = "Open Clothing Store",
-        distance = 3
-    },
-    ["barber"] = {
-        model = "s_m_m_hairdress_01",
-        scenario = "WORLD_HUMAN_STAND_MOBILE",
-        icon = "fas fa-scissors",
-        label = "Open Barber Shop",
-        distance = 3
-    },
-    ["tattoo"] = {
-        model = "u_m_y_tattoo_01",
-        scenario = "WORLD_HUMAN_STAND_MOBILE",
-        icon = "fas fa-pen",
-        label = "Open Tattoo Shop",
-        distance = 3
-    },
-    ["surgeon"] = {
-        model = "s_m_m_doctor_01",
-        scenario = "WORLD_HUMAN_STAND_MOBILE",
-        icon = "fas fa-scalpel",
-        label = "Open Surgeon",
-        distance = 3
-    },
-    ["clothingroom"] = {
-        model = "mp_g_m_pros_01",
-        scenario = "WORLD_HUMAN_STAND_MOBILE",
-        icon = "fas fa-sign-in-alt",
-        label = "Open Job / Gang Clothes Menu",
-        distance = 3
-    },
-    ["playeroutfitroom"] = {
-        model = "mp_g_m_pros_01",
-        scenario = "WORLD_HUMAN_STAND_MOBILE",
-        icon = "fas fa-sign-in-alt",
-        label = "Open Outfits Menu",
-        distance = 3
-    },
+["clothing"] = {
+    model = "s_f_m_shop_high",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
+    icon = "fas fa-tshirt",
+    label = "Kleidungsladen öffnen",
+    distance = 3
+},
+["barber"] = {
+    model = "s_m_m_hairdress_01",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
+    icon = "fas fa-scissors",
+    label = "Friseursalon öffnen",
+    distance = 3
+},
+["tattoo"] = {
+    model = "u_m_y_tattoo_01",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
+    icon = "fas fa-pen",
+    label = "Tattoo-Studio öffnen",
+    distance = 3
+},
+["surgeon"] = {
+    model = "s_m_m_doctor_01",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
+    icon = "fas fa-scalpel",
+    label = "Chirurgen öffnen",
+    distance = 3
+},
+["clothingroom"] = {
+    model = "mp_g_m_pros_01",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
+    icon = "fas fa-sign-in-alt",
+    label = "Job-/Gang-Kleider-Menü öffnen",
+    distance = 3
+},
+["playeroutfitroom"] = {
+    model = "mp_g_m_pros_01",
+    scenario = "WORLD_HUMAN_STAND_MOBILE",
+    icon = "fas fa-sign-in-alt",
+    label = "Outfit-Menü öffnen",
+    distance = 3
+},
+
 }
 
 Config.Stores = {
