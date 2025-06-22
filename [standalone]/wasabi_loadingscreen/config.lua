@@ -144,26 +144,48 @@ Config.Links = {
         icon = "fa-brands fa-youtube",
     },
     discord = {
-        url = "https://discord.gg/deinserver",
+        url = "https://discord.gg/fwePma2DhK",
         icon = "fa-brands fa-discord",
     },
 }
 
 Config.KeyboardKeys = {
+    -- FivePD / allgemeine Polizei-Interaktionen
     f9 = "ALPR umschalten",
-    f11 = "Dienstmenü öffnen",
-    y = "Einsatz oder Backup annehmen",
+    f11 = "Dienstmenü öffnen / Sprachreichweite wechseln",
+    y = "Einsatz/Backup annehmen",
     z = "Einsatzmenü öffnen",
-    g = "Dispatch-/Szenenmanagementmenü öffnen",
-    x = "Ped-Interaktionsmenü öffnen / Verkehrsstop-Positionierung",
-    o = "Wegpunkt zum nächsten Gefängnis setzen",
-    e = "Ped ins Fahrzeug setzen / Ped stoppen (halten)",
-    lshift_e = "Nagelbänder platzieren/aufheben (am Kofferraum)",
+    g = "Dispatch- oder Hauptmenü öffnen / Ziehen umschalten",
+    x = "Ped-Menü & Verkehrsstop öffnen",
+    o = "Wegpunkt zum Gefängnis setzen",
+    e = "Ped stoppen oder ins Fahrzeug setzen",
+    lshift_e = "Nagelbänder platzieren/entfernen (am Kofferraum)",
     u = "Ped ins Gefängnis bringen",
-    j = "Ausweis anzeigen (nach Kontrolle)",
-    b = "MDT öffnen",
-    lshift = "Fahrzeug anblinken (für Verkehrskontrolle)",
-    lctrl = "Tempomat aktivieren/deaktivieren (im Dienstmenü aktivieren)",
-    num_plus = "Tempomatgeschwindigkeit erhöhen",
-    num_minus = "Tempomatgeschwindigkeit senken"
+    j = "Ausweis anzeigen / Multijob-Menü öffnen",
+    b = "MDT oder Tempomat öffnen",
+    lshift = "Verkehrskontrolle starten/abbrechen",
+    lctrl = "Tempomat an/aus",
+    num_plus = "Tempomat schneller",
+    num_minus = "Tempomat langsamer",
+
+    -- Zusätzliche Gameplay-Features
+    right_alt = "AI-PIT aktivieren",
+    l = "Chat ein-/ausblenden",
+    k = "Sicherheitsgurt an-/ausziehen",
+    x_alt = "Nitro ein-/ausschalten", -- alternative X-Belegung
+    f6 = "Job-Menü öffnen (Creator)",
+    tab = "Inventar öffnen",
+    f1 = "Radialmenü öffnen",
+    left_alt = "Drittes Auge öffnen",
+
+    -- Kommunikation (PMA-Voice)
+    radio_talk = "Funk sprechen (PMA)", -- Taste muss im Voice-Modul gesetzt sein
+
+    -- Schnellzugriffs-Slots
+    y_alt = "Schnellwahl-Slots umschalten", -- alternative Y-Belegung
+    ["1"] = "Slot 1 benutzen",
+    ["2"] = "Slot 2 benutzen",
+    ["3"] = "Slot 3 benutzen",
+    ["4"] = "Slot 4 benutzen",
+    ["5"] = "Slot 5 benutzen"
 }
