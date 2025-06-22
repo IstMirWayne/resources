@@ -5,14 +5,11 @@ author 'FivePD'
 version '1.5'
 
 ui_page './computer/index.html'
-loadscreen './loading_screen/index.html'
 
 files {
 	'./MenuAPI.dll',
 	'./NativeUI.dll',
 	'./Newtonsoft.Json.dll',
-	'./loading_screen/bundle.js',
-	'./loading_screen/index.html',
 	'./FivePD.net.dll',
 	'./index.html',
     './callouts/*.dll',
