@@ -1,0 +1,1317 @@
+<div class="w-full h-full rounded-[2vw] flex relative">
+	<transition-group name="opacitypage">
+		<!-- CREATE BİLLİNG PLAYER -->
+		<div v-if="ActiveModal == 'createbill'" class="w-full h-full absolute rounded-[2vw] flex items-center justify-center bg-black/90 z-[2]" @click="CloseActiveModal">
+			<div
+				@click.stop
+				@click="ChangeCreateBillingPage('createbill2')"
+				class="w-[36.8%] cursor-pointer anim-hover-1 h-[11%] absolute bottom-[-3.2vh] z-[2] left-[23.9vw] rounded-full bg-[#548de8] border border-2 border-white/50 flex items-center justify-center"
+			>
+				<h2 v-if="CreateBillingPage == 'createbill1'" class="font-['Gilroy-Semibold'] text-white text-[1.05vw] fixtext leading-[100%]">{{Locales['next']}}</h2>
+				<h2 v-if="CreateBillingPage == 'createbill2'" class="font-['Gilroy-Semibold'] text-white text-[1.05vw] fixtext leading-[100%]">{{Locales['createinvoice']}}</h2>
+			</div>
+			<div class="w-[27%] h-[88%]" @click.stop>
+				<div v-if="CreateBillingPage == 'createbill1'" class="w-full h-[92.5%]" style="background-image: url(/html/images/createbillingbackground.png); background-size: 100% 100%">
+					<div class="w-full h-[11%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-black text-[1.25vw] fixtext leading-[100%]">{{Locales['invoicecreation']}}</h2>
+					</div>
+					<div class="w-full h-[9%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-black text-[1.05vw] fixtext leading-[100%]">{{Locales['from']}}</h2>
+					</div>
+					<div class="w-full h-[13%] flex items-end justify-center">
+						<div class="w-[21%] flex items-center justify-center aspect-square rounded-full border-2 border-black/10">
+							<div class="w-[86%] aspect-square rounded-full flex items-center justify-center">
+								<img v-if="PlayerData.profilephoto" :src="PlayerData.profilephoto" class="w-[100%] rounded-full aspect-square" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[4.4%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-black text-[1.0vw] fixtext leading-[100%]">{{PlayerData.name}}</h2>
+					</div>
+					<div class="w-full h-[11.5%] flex items-end justify-center">
+						<div class="w-full h-[40%] flex items-center justify-center relative">
+							<div class="w-[85%] h-full absolute flex justify-between z-[2]">
+								<div class="w-[11%] h-full flex items-center justify-center">
+									<img src="/html/images/lefticon.png" class="h-[60%] cursor-pointer anim-hover-1 prevbutton" alt="" />
+								</div>
+								<div class="w-[11%] h-full flex items-center justify-center">
+									<img src="/html/images/lefticon.png" style="transform: rotate(180deg)" class="h-[60%] cursor-pointer anim-hover-1 nextbutton" alt="" />
+								</div>
+							</div>
+							<h2 class="font-['Gilroy-Semibold'] text-black text-[1.0vw] fixtext leading-[100%]">{{Locales['tonearbyplayers']}}</h2>
+						</div>
+					</div>
+
+					<div class="w-full h-[19%] flex items-end justify-center">
+						<div class="w-[87.5%] h-[85%] overflow-hidden" id="nearbyplayers">
+							<div v-if="ShowLoadingBar" class="w-full h-full relative">
+								<div class="w-full h-full absolute z-[10] flex flex-wrap flex-col content-center items-center justify-center pl-[2rem] pr-[2rem]">
+									<span class="loader"></span>
+									<h2 class="text-[0.7vw] font-semibold font-['Gilroy-Semibold'] text-black">{{Locales['loading']}}</h2>
+								</div>
+							</div>
+							<div v-if="!ShowLoadingBar && NearbyPlayers && NearbyPlayers.Players && NearbyPlayers.Players.length > 0" class="w-full h-full flex swiper-wrapper">
+								<div v-for="data in NearbyPlayers.Players" class="w-[22%] h-full swiper-slide nearbyplayers" @click="SelectBillingPlayer(data.id)">
+									<div class="w-full h-full">
+										<div class="w-full h-[62%] flex items-end justify-center">
+											<div class="w-[85%] aspect-square rounded-full bg-black relative">
+												<img :src="data.profilephoto" class="w-full h-full rounded-full absolute z-[1]" alt="" />
+												<img :src="data.profilephoto" class="w-full h-full rounded-full" style="filter: blur(0.2vw)" alt="" />
+											</div>
+										</div>
+
+										<div v-if="NearbyPlayers.ConfigSettings" class="w-full h-[38%]">
+											<div class="w-full h-[50%] flex items-end justify-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[100%]">{{GetFirstName(data.name)}}</h2>
+											</div>
+											<div class="w-full h-[50%] flex items-end justify-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[100%]">{{GetLastName(data.name)}}</h2>
+											</div>
+										</div>
+
+										<div v-else class="w-full h-[19%] flex items-end justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[100%]">ID - {{data.id}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div v-else class="w-full h-full relative">
+								<div class="w-full h-full flex items-center justify-center">
+									<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[100%]">{{Locales['nearbyplayersnotfound']}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="w-full h-[4%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.9vw] fixtext leading-[100%]">{{Locales['or']}}</h2>
+					</div>
+
+					<div class="w-full h-[6.5%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[100%]">{{Locales['toid']}}</h2>
+					</div>
+
+					<div class="w-full h-[10.5%] flex items-end justify-center">
+						<div class="w-[70%] h-[65%] rounded-[0.7vw] bg-black/20">
+							<input
+								type="text"
+								@input="checkInput"
+								v-model="Models.CreateBillingPlayerID"
+								class="w-full h-full bg-transparent text-center font-['Gilroy-Semibold'] text-black text-[0.8vw] outline-none border-none placeholder:text-black/50"
+								:placeholder="Locales['playerid']"
+							/>
+						</div>
+					</div>
+				</div>
+				<div
+					v-if="CreateBillingPage == 'createbill2'"
+					class="w-full h-[92.5%] relative z-[2]"
+					style="background-image: url(/html/images/createbillingbackground2.png); background-size: 100% 100%"
+				>
+					<div class="w-full h-[19.5%] flex items-end justify-center">
+						<div class="w-[82%] h-[73%]">
+							<div class="w-full h-[33%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['personal']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black/40 fixtext leading-[100%]">{{GetFormattedData()}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[33%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['due']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black/40 fixtext leading-[100%]">{{GetDataAfterDays()}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[33%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['to']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black/40 fixtext leading-[100%]">{{CreateBillingData.targetplayerdata.name}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[8%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext">{{Locales['charges']}}</h2>
+					</div>
+
+					<div class="w-full h-[25.5%] flex items-end justify-center relative">
+						<div class="w-[82%] h-full overflow-auto no-scrollbar">
+							<div v-for="(data,index) in CreateBillingData.reasons" class="w-full h-[20%] flex relative">
+								<div
+									v-if="tooltip.visible && tooltip.index === index"
+									:style="{ top: 100 + '%', left: 0+ 'px' }"
+									class="absolute w-[100%] inline-flex z-[2] bg-black/90 rounded-[0.5vw] z-[5]"
+								>
+									<h2 class="font-['Gilroy-Semibold'] text-[0.8vw] p-[0.5vw] text-white leading-[100%]">
+										{{typeof(tooltip.text) == 'number' ? currencyUnit+' '+Number(tooltip.text).toLocaleString() : tooltip.text}}
+									</h2>
+								</div>
+								<div class="w-[70%] h-full flex items-center relative z-[2]" @mouseover="ShowTooltip($event, data.reason, index)" @mouseleave="HideTooltip">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext">{{data.reason}}</h2>
+								</div>
+								<div class="w-[20%] h-full flex items-center justify-end" @mouseover="ShowTooltip($event, Number(data.amount), index)" @mouseleave="HideTooltip">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+								</div>
+								<div class="w-[10%] h-full flex items-center justify-center">
+									<img class="h-[40%] cursor-pointer anim-hover-1" @click="RemoveBillingReason(data.id)" src="/html/images/-icon.png" alt="" />
+								</div>
+							</div>
+							<div class="w-full h-[20%]" v-for="data in 3"></div>
+						</div>
+					</div>
+					<div class="w-full h-[6.5%] flex items-center justify-center">
+						<div class="w-[82%] h-full flex justify-between">
+							<div class="w-[67%] h-full bg-black/20 rounded-[0.5vw]">
+								<input
+									v-model="Models.BillingReason"
+									type="text"
+									class="w-full h-full bg-transparent pl-[0.5vw] pr-[0.5vw] outline-none border-none text-black/40 placeholder:text-black/40 font-['Gilroy-Semibold'] text-[1.04vw] fixtext leading-[100%]"
+									:placeholder="Locales['chargereason']"
+								/>
+							</div>
+							<div class="w-[31%] h-full bg-black/20 rounded-[0.5vw]">
+								<input
+									type="text"
+									@input="checkInput"
+									v-model="Models.BillingAmount"
+									class="w-full h-full bg-transparent text-center pl-[0.5vw] pr-[0.5vw] outline-none border-none text-black/40 placeholder:text-black/40 font-['Gilroy-Semibold'] text-[1.04vw] fixtext leading-[100%]"
+									placeholder="$0"
+								/>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[8.7%] flex items-end justify-center">
+						<div class="w-[82%] h-[76%] rounded-[0.5vw] bg-[#548de8] flex items-center justify-center anim-hover-1 cursor-pointer" @click="AddBillingReason">
+							<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-white fixtext leading-[100%]">{{Locales['add']}}</h2>
+						</div>
+					</div>
+
+					<div class="w-full h-[15.5%] a flex items-end justify-center">
+						<div class="w-[82%] h-[70%]">
+							<div class="w-full h-[50%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['subtotal']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{currencyUnit}}{{GetSubtotalCreateBillingAmount.toLocaleString()}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[50%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['tax']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">%{{BillingTax}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[9%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[1.7vw] text-black fixtext leading-[100%] pl-[1vw] pr-[1vw]">
+							{{currencyUnit}}{{GetSubtotalCreateBillingAmountWithTax.toLocaleString()}}
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- CREATE BİLLİNG PLAYER FINISH -->
+		<!-- PAY ALl COMPONENT -->
+		<div v-if="ActiveModal == 'payall'" class="w-full h-full absolute flex items-center justify-center bg-black/90 rounded-[2vw] z-[2]" @click="CloseActiveModal">
+			<div
+				@click.stop
+				@click="PayAllBilling"
+				class="w-[36.8%] cursor-pointer anim-hover-1 h-[11%] absolute bottom-[-3.2vh] z-[2] left-[23.9vw] rounded-full bg-[#548de8] border border-2 border-white/50 flex items-center justify-center"
+			>
+				<h2 class="font-['Gilroy-Semibold'] text-white text-[1.05vw] fixtext leading-[100%]">{{Locales['payallbills']}}</h2>
+			</div>
+			<div class="w-[25.1%] h-[88%]">
+				<div class="w-full h-[92.3%]" @click.stop style="background-image: url(/html/images/largebillbackground.png); background-size: 100% 100%">
+					<div class="w-full h-[15.4%] flex items-end justify-center">
+						<div class="w-[21%] flex items-center justify-center aspect-square rounded-full border-2 border-black/10">
+							<h2 class="font-['Gilroy-Semibold'] text-[1.4vw] text-black text-[0.8vw] fixtext">{{PayAllBills.length}}</h2>
+						</div>
+					</div>
+					<div class="w-full h-[5.5%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[1.23vw] text-black fixtext leading-[100%]">{{Locales['totalinvoicepayment']}}</h2>
+					</div>
+					<div class="w-full h-[5.5%]"></div>
+					<div class="w-full h-[45%] flex items-center justify-center">
+						<div class="w-[80%] h-full overflow-auto no-scrollbar">
+							<div v-for="data in PayAllBills" class="w-full h-[12.5%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{data.name}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{currencyUnit}}{{Number(data.amount).toLocaleString()}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[14%] flex items-end justify-center">
+						<div class="w-[81%] h-[90%]">
+							<div class="w-full h-[48%] flex items-center justify-between">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['subtotal']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{currencyUnit}}{{SubtotalPayAll.toLocaleString()}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[48%] flex items-center justify-between">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['tax']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">%{{BillingTax}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[8.5%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[1.7vw] text-black fixtext leading-[100%]">{{currencyUnit}}{{GetAllTotalPayAll.toLocaleString()}}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- PAY ALl COMPONENT FINISH -->
+		<!-- PAY WITH INOVOICE COMPONENT -->
+		<div v-if="ActiveModal == 'paywithinvoiceid'" @click="CloseActiveModal" class="w-full h-full absolute flex items-center justify-center bg-black/90 rounded-[2vw] z-[2]">
+			<div @click="GetBillingInvoiceID" class="w-[37%] h-[11%] absolute bottom-[-3.3vh] rounded-full bg-[#548de8] border border-2 border-white/50 cursor-pointer anim-hover-1" @click.stop>
+				<div class="w-full h-full absolute flex items-center justify-center">
+					<h2 class="font-['Gilroy-Semibold'] text-white text-[1.3vw] fixtext">{{Locales['next']}}</h2>
+				</div>
+			</div>
+			<div class="w-[26%] h-[44%]">
+				<div class="w-full h-[85%]" @click.stop style="background-image: url(/html/images/paywithbackground.png); background-size: 100% 100%">
+					<div class="w-full h-[23%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[1.2vw] text-black fixtext leading-[100%]">{{Locales['invoiceid']}}</h2>
+					</div>
+					<div class="w-full h-[36%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[0.85vw] text-black/60 fixtext leading-[100%]">#{{Locales['invoiceidlarge']}}</h2>
+					</div>
+					<div class="w-full h-[29%] flex items-end justify-center">
+						<div class="w-[83%] h-[53%] rounded-[0.5vw] bg-black/20">
+							<input
+								type="text"
+								v-model="Models.InvoiceID"
+								class="w-full h-full bg-transparent text-center font-['Gilroy-Semibold'] text-black text-[0.8vw] outline-none border-none placeholder:text-black/50"
+								:placeholder="Locales['typeinvoiceid']"
+							/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- PAY WITH INOVOICE COMPONENT FINISH -->
+		<div v-if="ActiveModal == 'paywithinvoiceid2'" class="w-full h-full absolute flex items-center justify-center z-[2] bg-black/90 rounded-[2vw]" @click="CloseActiveModal">
+			<div
+				class="w-[37%] h-[11%] absolute bottom-[-3.3vh] rounded-full bg-[#548de8] border border-2 border-white/50 cursor-pointer anim-hover-1"
+				@click="PayBills(PayWithBilling.invoiceid)"
+				@click.stop
+			>
+				<div class="w-full h-full absolute flex items-center justify-center">
+					<h2 class="font-['Gilroy-Semibold'] text-white text-[1.3vw] fixtext">{{Locales['paythebill']}}</h2>
+				</div>
+				<div class="w-[18%] h-full flex items-center justify-center relative z-[2]" @click="ChangeActiveModel('paywithinvoiceid')">
+					<img src="/html/images/lefticoncircle.png" class="h-[75%]" alt="" />
+				</div>
+			</div>
+			<div class="w-[26%] h-[87.5%] flex items-start justify-center" @click.stop>
+				<div class="w-[100%] h-[92.5%]" style="background-image: url(/html/images/billbackground2.png); background-size: 100% 100%">
+					<div class="w-full h-[20%] flex items-end justify-center">
+						<div class="w-[82%] h-[78%]">
+							<div class="w-full h-[33%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{PayWithBilling.identifiername}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black/40 fixtext leading-[100%]">{{PayWithBilling.formatdate}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[33%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['due']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black/40 fixtext leading-[100%]">{{PayWithBilling.formatoverduedate}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[33%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['to']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black/40 fixtext leading-[100%]">{{PayWithBilling.targetname}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[6.3%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-black text-[1vw] fixtext">{{Locales['charges']}}</h2>
+					</div>
+					<div class="w-full h-[44%] flex items-center justify-center">
+						<div class="w-[82%] h-full overflow-auto no-scrollbar">
+							<div v-for="data in PayWithBilling.reason" class="w-full h-[12.5%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{data.reason}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{currencyUnit}}{{Number(data.amount).toLocaleString()}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[14%] flex items-end justify-center">
+						<div class="w-[82%] h-[84%]">
+							<div class="w-full h-[47%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['subtotal']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{currencyUnit}}{{Number(PayWithBilling.amount).toLocaleString()}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[47%] flex">
+								<div class="w-[50%] h-full flex items-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">{{Locales['tax']}}</h2>
+								</div>
+								<div class="w-[50%] h-full flex items-center justify-end">
+									<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext leading-[100%]">%{{BillingTax}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="w-full h-[9%] flex items-end justify-center">
+						<h2 class="font-['Gilroy-Semibold'] text-[1.6vw] text-black fixtext leading-[100%] pl-[1vw] pr-[1vw]">
+							{{currencyUnit}}{{Number(PayWithBilling.totalAmount).toLocaleString()}}
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</transition-group>
+
+	<div class="w-[22%] h-full flex items-center justify-center">
+		<div class="w-[92%] h-[100%]">
+			<div class="w-full h-[7.8%]"></div>
+			<div class="w-[98%] ml-[0.2vw] mt-[0.4vh] h-[17.5%] rounded-[1.1vw] relative" style="background: rgba(0, 0, 0, 0.13); border: 2px rgba(255, 255, 255, 0.06) solid">
+				<div
+					v-if="PlayerData.admin"
+					class="w-[12.5%] h-[20%] absolute right-0 cursor-pointer anim-hover-1 top-0 bg-[#e85454]/50 rounded-tr-[1vw] rounded-bl-[1vw] flex items-center justify-center"
+					@click="OpenAdminPage"
+				>
+					<img src="/html/images/adminpageicon.png" class="h-[60%]" alt="" />
+				</div>
+				<div class="w-full h-[51%] flex items-end justify-end">
+					<div class="w-[95%] h-[85%] flex justify-between">
+						<div class="w-[22%] h-full flex items-center justify-center">
+							<div class="w-full aspect-square rounded-full relative">
+								<img :src="PlayerData.profilephoto" class="w-full h-full rounded-full absolute z-[1]" style="object-fit: cover; object-position: center" alt="" />
+								<img :src="PlayerData.profilephoto" class="w-full h-full rounded-full" style="object-fit: cover; object-position: center; filter: blur(1vw)" alt="" />
+							</div>
+						</div>
+						<div class="w-[72%] h-full flex flex-col justify-center">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[0.8vw] leading-[100%]">{{Locales['hello']}},</h2>
+							<h2 class="font-['Gilroy-Medium'] text-white text-[0.8vw] fixtext">{{PlayerData.name}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-[38%] flex items-end justify-center">
+					<div class="w-[90%] h-[65%] bg-[#548de8]/20 rounded-[0.5vw] relative">
+						<div class="w-full h-full absolute flex items-center justify-center">
+							<h2 v-if="PlayerData.bank" class="font-['Gilroy-Semibold'] text-[#548DE8] text-[0.8vw] fixtext pl-[2vw] pr-[2vw]">{{currencyUnit}} {{PlayerData.bank.toLocaleString()}}</h2>
+						</div>
+						<div class="w-[20%] h-full flex items-center justify-center">
+							<img src="/html/images/bankicon.png" class="h-[60%]" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="w-full h-[65.7%] overflow-auto no-scrollbar">
+				<div
+					v-for="data in category"
+					:class="data.name == currentPage ? 'bg-[#548de8]/10 rounded-[20px] border-2 border-[#548de8]/5' : 'categorybutton'"
+					class="w-full h-[9%] mt-[1.8vh] rounded-[1vw] flex cursor-pointer relative"
+					@click="ChangePage(data.name)"
+				>
+					<div v-if="data.name == 'unpaidbills' && GetUnpaidBills.length > 0 " class="w-[15%] h-full right-[1vw] absolute flex items-center justify-center">
+						<div class="w-[65%] bg-[#e85454] aspect-square rounded-full flex items-center justify-center">
+							<h2 class="font-['Gilroy-Medium'] text-black text-[0.9vw] fixtext">{{GetUnpaidBills.length}}</h2>
+						</div>
+					</div>
+					<div class="w-[22%] h-full flex items-center justify-center">
+						<div class="w-[50%] h-[65%]">
+							<img v-if="currentPage !== data.name" :src="'/html/images/'+data.name+'icon.png'" class="h-full" alt="" />
+							<img v-else :src="'/html/images/'+data.name+'iconactive.png'" class="h-full" alt="" />
+						</div>
+					</div>
+					<div class="w-[77%] h-full flex items-center">
+						<h2 :class="data.name == currentPage ? 'text-[#548DE8]' : 'text-white/30 '" class="font-['Gilroy-Medium'] text-[1vw] fixtext">{{Locales[data.name]}}</h2>
+					</div>
+				</div>
+			</div>
+			<div v-if="GetOnOverDueBills.length > 0" class="w-full h-[7%] flex items-center justify-center">
+				<div
+					:class="'onoverdue' == currentPage ? 'bg-[#d3691c]/25 rounded-[1vw] border-2 border-[#d3691c]/5' : ''"
+					class="w-full h-[90%] rounded-[1vw] flex cursor-pointer relative"
+					@click="ChangePage('onoverdue')"
+				>
+					<div v-if="GetOnOverDueBills.length > 0" class="w-[15%] h-full right-[1vw] absolute flex items-center justify-center">
+						<div class="w-[65%] bg-[#d3691c] aspect-square rounded-full flex items-center justify-center">
+							<h2 class="font-['Gilroy-Medium'] text-black text-[0.9vw] fixtext">{{GetOnOverDueBills.length}}</h2>
+						</div>
+					</div>
+					<div class="w-[22%] h-full flex items-center justify-center">
+						<div class="w-[50%] h-[60%]">
+							<img src="/html/images/onoverdueicon.png" class="h-full" alt="" />
+						</div>
+					</div>
+					<div class="w-[77%] h-full flex items-center">
+						<h2 :class="'onoverdue' == currentPage ? 'text-[#d3691c]' : 'text-white/30 '" class="font-['Gilroy-Medium'] text-[1vw] leading-[99.5%] fixtext">{{Locales['onoverdue']}}</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="w-[77%] h-full relative relative">
+		<transition-group name="opacitypage">
+			<div v-if="currentPage == 'dashboard'" class="w-full h-full absolute">
+				<div class="w-full h-[7.8%]"></div>
+				<div class="w-full h-[42%] flex items-end justify-center">
+					<div class="w-[96%] h-[94%] flex items-end justify-center relative" style="background-image: url(/html/images/chartbackground.png); background-size: 100% 100%">
+						<div class="w-full h-[13%] absolute top-0 flex items-center justify-center">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw] fixtext">{{Locales['billingstatics']}}</h2>
+						</div>
+						<div class="w-[95%] h-[90%]">
+							<div v-if="ShowChartLoadingBar" class="w-full h-full relative">
+								<div class="w-full h-full absolute z-[10] flex flex-wrap flex-col content-center items-center justify-center pl-[2rem] pr-[2rem]">
+									<span class="loader"></span>
+									<h2 class="text-[1vw] font-['Gilroy-Semibold'] text-white">{{Locales['loading']}}</h2>
+								</div>
+							</div>
+							<canvas id="personelPageChart" class="w-full h-full"></canvas>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-[45.5%] flex items-end justify-center">
+					<div class="w-[96%] h-[95%] flex justify-between">
+						<div class="w-[33.3%] h-full" style="background-image: url(/html/images/invoicestrackbackground.png); background-size: 100% 100%">
+							<div class="w-full h-[19.5%] flex items-end justify-center">
+								<div class="w-[92.5%] h-[80%] flex items-center">
+									<div class="w-[18%] h-full flex items-center justify-center">
+										<div class="w-full bg-white aspect-square rounded-full">
+											<img src="/html/images/invoicetrackicon.png" class="w-full h-full" alt="" />
+										</div>
+									</div>
+									<h2 class="font-['Gilroy-Semibold'] text-white text-[1vw] ml-[1vw] fixtext">{{Locales['invoicetrack']}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[70.8%] flex items-end justify-center">
+								<div class="w-[70%] h-[96%]" style="background-image: url(/html/images/invoicetrackinfoicon.png); background-size: 100% 100%">
+									<div class="w-full h-[18.5%] flex items-end justify-center">
+										<h2 class="font-['Gilroy-Semibold'] text-black text-[1vw] fixtext leading-[100%]">{{Locales['invoices']}}</h2>
+									</div>
+									<div class="w-full h-[25%] flex items-end justify-center">
+										<div class="w-[67%] h-[60%] bg-[#d9d9d9]/50 rounded-[0.5vw] flex items-center justify-center flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[99%]">{{GetPaidBills.length}} {{Locales['paid']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[22%] flex items-end justify-center">
+										<div class="w-[67%] h-[73%] bg-[#d9d9d9]/50 rounded-[0.5vw] flex items-center justify-center flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[99%]">{{GetUnpaidBills.length}} {{Locales['unpaid']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[22%] flex items-end justify-center">
+										<div class="w-[67%] h-[73%] bg-[#d9d9d9]/50 rounded-[0.5vw] flex items-center justify-center flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[99%]">{{GetPaidAndUnpaidBillsTotalLength}} {{Locales['total']}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="w-[33.3%] h-full" style="background-image: url(/html/images/taxtrackbakground.png); background-size: 100% 100%">
+							<div class="w-full h-[19.5%] flex items-end justify-center">
+								<div class="w-[92.5%] h-[80%] flex items-center">
+									<div class="w-[18%] h-full flex items-center justify-center">
+										<div class="w-full bg-white aspect-square rounded-full">
+											<img src="/html/images/taxtrackicon.png" class="w-full h-full" alt="" />
+										</div>
+									</div>
+									<h2 class="font-['Gilroy-Semibold'] text-white text-[1vw] ml-[1vw] fixtext">{{Locales['taxtrack']}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[70.8%] flex items-end justify-center">
+								<div class="w-[70%] h-[96%]" style="background-image: url(/html/images/taxtrackinfobackground.png); background-size: 100% 100%">
+									<div class="w-full h-[18.5%] flex items-end justify-center">
+										<h2 class="font-['Gilroy-Semibold'] text-black text-[1vw] fixtext leading-[100%]">{{Locales['invoices']}}</h2>
+									</div>
+									<div class="w-full h-[25%] flex items-end justify-center">
+										<div class="w-[67%] h-[60%] bg-black/10 rounded-[0.5vw] flex items-center justify-center flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[99%]">{{GetPaidTaxesLength}} {{Locales['paid']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[22%] flex items-end justify-center">
+										<div class="w-[67%] h-[73%] bg-black/10 rounded-[0.5vw] flex items-center justify-center flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[99%]">{{GetUnpaidTaxesLength}} {{Locales['unpaid']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[22%] flex items-end justify-center">
+										<div class="w-[67%] h-[73%] bg-black/10 rounded-[0.5vw] flex items-center justify-center flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] fixtext leading-[99%]">{{GetUnpaidAndPaidTaxesTotalLength}} {{Locales['total']}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="w-[29.3%] h-full" style="background-image: url(/html/images/lstaxratesbackground.png); background-size: 100% 100%">
+							<div class="w-full h-[19.5%] flex items-end justify-center">
+								<div class="w-[92.5%] h-[80%] flex items-center">
+									<div class="w-[18%] h-full flex items-center justify-center">
+										<div class="w-full bg-white aspect-square rounded-full">
+											<img src="/html/images/lstaxratesicon.png" class="w-full h-full" alt="" />
+										</div>
+									</div>
+									<h2 class="font-['Gilroy-Semibold'] text-white text-[1vw] ml-[1vw] fixtext">{{Locales['lstaxrates']}}</h2>
+								</div>
+							</div>
+							<div class="w-full h-[62%] flex items-center justify-center pb-[1.5vh]">
+								<div class="w-[90%] h-full overflow-auto no-scrollbar">
+									<div v-for="data in GetPersonelServerTaxes" class="w-full h-[17%] mt-[1.2vh] bg-white/10 rounded-[0.5vw] flex items-center justify-center">
+										<div class="w-[90%] h-full flex items-center justify-between">
+											<h2 class="font-['Gilroy-Semibold'] text-white text-[0.8vw] fixtext">{{data.label}}</h2>
+											<h2 class="font-['Gilroy-Semibold'] text-white text-[0.8vw] fixtext">
+												{{currencyUnit}}{{Number(data.amount).toLocaleString()}} {{data.hours}}-{{Locales['hours']}}
+											</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[15%] flex items-center justify-center">
+								<div class="w-[90%] h-full bg-[#e8af54]/10 rounded-[1vw] flex items-center justify-center">
+									<h2 class="font-['Gilroy-Semibold'] text-[#E8AF54] text-center text-[0.7vw] leading-[100%] pl-[0.5vw] pr-[0.5vw]">{{Locales['lstaxratesinfo']}}</h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="currentPage == 'onoverdue'" class="w-full h-full absolute">
+				<div class="w-full h-[9.4%]"></div>
+				<div class="w-full h-[5.9%] flex items-center justify-center">
+					<div class="w-[94.5%] h-full relative flex justify-between relative">
+						<div class="w-full h-full flex items-center justify-center absolute z-[0]">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['billsonoverdue']}}</h2>
+						</div>
+						<div class="w-[30.6%] h-full bg-black/20 rounded-[1vw] flex relative">
+							<div class="w-[17%] h-full flex items-center justify-center">
+								<img src="/html/images/searchicon.png" class="h-[55%]" alt="" />
+							</div>
+							<div class="w-[80%] h-full flex">
+								<input
+									type="text"
+									v-model="Models.OnOverDue"
+									:placeholder="Locales['searchanybill']"
+									class="w-full h-full bg-transparent font-['Gilroy-Medium'] text-white text-[0.8vw] outline-none border-none placeholder:text-white/50"
+								/>
+							</div>
+						</div>
+						<div class="w-[67%] h-full flex justify-end relative">
+							<div class="inline-flex h-full flex items-center justify-center bg-[#D3691C] rounded-[0.5vw] cursor-pointer anim-hover-1" @click="ChangeActiveModel('payall')">
+								<h2 class="font-['Gilroy-Medium'] text-white text-[0.8vw] pr-[1.7vw] pl-[1.7vw]">{{Locales['payall']}}</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-[83%] flex items-end justify-center">
+					<div class="w-[94.3%] h-[96%] overflow-auto no-scrollbar flex flex-wrap content-start items-start justify-between">
+						<div
+							v-for="(data,index) in GetOnOverDueBills"
+							class="w-[24.5%] h-[67%] opacity-[0.5]"
+							@mouseover="ChangeOpacity(index)"
+							@mouseleave="ChangeOpacity(-1)"
+							@click="PayBills(data.invoiceid)"
+							:class="index <= 3 ? '' : 'mt-[1.8vh]', OpacityValue == index ? 'opacity-100' : ''"
+							style="background-image: url(/html/images/billbackground.png); background-size: 100% 100%"
+						>
+							<div class="w-[100%] h-[26%] flex items-end justify-center">
+								<div class="w-[95%] h-[92%]">
+									<div class="w-full h-[25%] flex pl-[0.3vw] pr-[0.3vw]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.identifiername}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatdate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] pl-[0.3vw] pr-[0.3vw] flex bg-[#e89154]/50 rounded-[0.5vw]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-[#d3681c] text-[0.8vw] leading-[100%] fixtext">{{Locales['onoverdue']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-[#d3681c] text-[0.8vw] leading-[100%] fixtext">{{data.formatoverduedate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] flex pl-[0.3vw] pr-[0.3vw]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['to']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{Locales['you']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] flex pl-[0.3vw] pr-[0.3vw]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['invoiceid']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">#{{data.invoiceid}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1%]"></div>
+							<div class="w-full h-[6%] flex items-end justify-center">
+								<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%]">{{Locales['charges']}}</h2>
+							</div>
+							<div class="w-full h-[25%] flex items-center justify-center">
+								<div class="w-[90%] h-full overflow-auto no-scrollbar">
+									<div class="w-full h-[5%]"></div>
+									<div v-for="data in data.reason" class="w-full h-[16%] mt-[0.8vh] flex relative">
+										<div
+											v-if="tooltip.visible && tooltip.index === index"
+											:style="{ top: 100 + '%', left: 0+ 'px' }"
+											class="absolute w-[100%] inline-flex z-[2] bg-black/90 rounded-[0.5vw] z-[5]"
+										>
+											<h2 class="font-['Gilroy-Semibold'] text-[0.8vw] p-[0.5vw] text-white leading-[100%]">
+												{{typeof(tooltip.text) == 'number' ? currencyUnit+' '+Number(tooltip.text).toLocaleString() : tooltip.text}}
+											</h2>
+										</div>
+										<div class="w-[70%] h-full flex items-center relative z-[2]" @mouseover="ShowTooltip($event, data.reason, index)" @mouseleave="HideTooltip">
+											<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext">{{data.reason}}</h2>
+										</div>
+										<div class="w-[20%] h-full flex items-center justify-end" @mouseover="ShowTooltip($event, Number(data.amount), index)" @mouseleave="HideTooltip">
+											<h2 class="font-['Gilroy-Semibold'] text-[1.04vw] text-black fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.5%]"></div>
+							<div class="w-full h-[13.5%] flex items-center justify-center">
+								<div class="w-[90%] h-full">
+									<div class="w-full h-[25%] flex mt-[0.8vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['subtotal']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['tax']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">%{{BillingTax}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.2%]"></div>
+							<div class="w-full h-[11.5%] flex items-center justify-center">
+								<h2 class="font-['Gilroy-Bold'] text-black text-[1.2vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.totalAmount).toLocaleString()}}</h2>
+							</div>
+							<div
+								class="w-full h-[14.5%] flex items-center justify-center cursor-pointer"
+								style="background-image: url(/html/images/overduebottombutton.png); background-size: 100% 100%"
+							>
+								<h2 class="font-['Gilroy-Semibold'] text-white text-[1vw] leading-[100%] fixtext">{{Locales['pay']}}</h2>
+							</div>
+						</div>
+
+						<div class="w-[24.5%] h-[67%]" v-for="data in 5"></div>
+					</div>
+				</div>
+			</div>
+			<div v-if="currentPage == 'unpaidbills'" class="w-full h-full absolute">
+				<div class="w-full h-[9.4%]"></div>
+				<div class="w-full h-[5.9%] flex items-center justify-center">
+					<div class="w-[94.5%] h-full relative flex justify-between relative">
+						<div class="w-full h-full flex items-center justify-center absolute z-[0]">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['unpaidbills']}}</h2>
+						</div>
+						<div class="w-[30.6%] h-full bg-black/20 rounded-[1vw] flex relative">
+							<div class="w-[17%] h-full flex items-center justify-center">
+								<img src="/html/images/searchicon.png" class="h-[55%]" alt="" />
+							</div>
+							<div class="w-[80%] h-full flex">
+								<input
+									type="text"
+									v-model="Models.UnpaidBills"
+									:placeholder="Locales['searchanybill']"
+									class="w-full h-full bg-transparent font-['Gilroy-Medium'] text-white text-[0.8vw] outline-none border-none placeholder:text-white/50"
+								/>
+							</div>
+						</div>
+						<div class="w-[67%] h-full flex justify-end relative">
+							<div
+								class="inline-flex h-full flex items-center justify-center mr-[0.8vw] bg-[#548DE8] rounded-[0.5vw] cursor-pointer anim-hover-1"
+								@click="ChangeActiveModel('paywithinvoiceid')"
+							>
+								<h2 class="font-['Gilroy-Medium'] text-white text-[0.8vw] pr-[1vw] pl-[1vw]">{{Locales['paywithinvoiceid']}}</h2>
+							</div>
+							<div class="inline-flex h-full flex items-center justify-center bg-[#548DE8] rounded-[0.5vw] cursor-pointer anim-hover-1" @click="ChangeActiveModel('payall')">
+								<h2 class="font-['Gilroy-Medium'] text-white text-[0.8vw] pr-[1.7vw] pl-[1.7vw]">{{Locales['payall']}}</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-[83%] flex items-end justify-center">
+					<div class="w-[94.3%] h-[96%] overflow-auto no-scrollbar flex flex-wrap content-start items-start justify-between">
+						<div v-if="GetUnpaidBills.length <= 0" class="w-full h-full flex items-center justify-center">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['nopaidbill']}}</h2>
+						</div>
+						<div
+							v-else
+							v-for="(data,index) in GetUnpaidBills"
+							class="w-[24.5%] h-[67%] opacity-[0.5]"
+							@mouseover="ChangeOpacity(index)"
+							@mouseleave="ChangeOpacity(-1)"
+							:class="index <= 3 ? '' : 'mt-[1.8vh]', OpacityValue == index ? 'opacity-100' : ''"
+							style="background-image: url(/html/images/billbackground.png); background-size: 100% 100%"
+						>
+							<div class="w-[100%] h-[26%] flex items-end justify-center">
+								<div class="w-[92%] h-[92%]">
+									<div class="w-full h-[17%] flex">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.identifiername}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatdate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['due']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatoverduedate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[0.75vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['to']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{Locales['you']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[0.75vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['invoiceid']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">#{{data.invoiceid}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1%]"></div>
+							<div class="w-full h-[6%] flex items-end justify-center">
+								<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw]">{{Locales['charges']}}</h2>
+							</div>
+							<div class="w-full h-[25%] flex items-center justify-center">
+								<div class="w-[90%] h-full overflow-auto no-scrollbar">
+									<div class="w-full h-[5%]"></div>
+									<div v-for="data in data.reason" class="w-full h-[16%] mt-[0.8vh] flex">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.reason}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.5%]"></div>
+							<div class="w-full h-[13.5%] flex items-center justify-center">
+								<div class="w-[90%] h-full">
+									<div class="w-full h-[25%] flex mt-[0.8vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['subtotal']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['tax']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">%{{BillingTax}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.2%]"></div>
+							<div class="w-full h-[11.5%] flex items-center justify-center">
+								<h2 class="font-['Gilroy-Bold'] text-black text-[1.2vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.totalAmount).toLocaleString()}}</h2>
+							</div>
+							<div
+								class="w-full h-[14.5%] flex items-center justify-center cursor-pointer"
+								@click="PayBills(data.invoiceid)"
+								style="background-image: url(/html/images/billingbottombutton.png); background-size: 100% 100%"
+							>
+								<h2 class="font-['Gilroy-Semibold'] text-white text-[1.25vw] fixtext">{{Locales['pay']}}</h2>
+							</div>
+						</div>
+						<div class="w-[24.5%] h-[67%]" v-for="data in 4"></div>
+					</div>
+				</div>
+			</div>
+			<div v-if="currentPage == 'paidbills'" class="w-full h-full absolute">
+				<div class="w-full h-[9.4%]"></div>
+				<div class="w-full h-[5.9%] flex items-center justify-center">
+					<div class="w-[94.5%] h-full relative flex justify-between relative">
+						<div class="w-full h-full flex items-center justify-center absolute z-[0]">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['paidbills']}}</h2>
+						</div>
+						<div class="w-[30.6%] h-full bg-black/20 rounded-[1vw] flex relative">
+							<div class="w-[17%] h-full flex items-center justify-center">
+								<img src="/html/images/searchicon.png" class="h-[55%]" alt="" />
+							</div>
+							<div class="w-[80%] h-full flex">
+								<input
+									type="text"
+									v-model="Models.PaidBills"
+									:placeholder="Locales['searchanybill']"
+									class="w-full h-full bg-transparent font-['Gilroy-Medium'] text-white text-[0.8vw] outline-none border-none placeholder:text-white/50"
+								/>
+							</div>
+						</div>
+						<div class="w-[67%] h-full flex justify-end relative items-center">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[0.8vw]">{{GetPaidBills.length}} {{Locales['total']}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-[83%] flex items-end justify-center">
+					<div class="w-[94.3%] h-[96%] overflow-auto no-scrollbar flex flex-wrap content-start items-start justify-between">
+						<div v-if="GetPaidBills.length <= 0" class="w-full h-full flex items-center justify-center">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['nopaidbill']}}</h2>
+						</div>
+						<div
+							v-else
+							v-for="(data,index) in GetPaidBills"
+							class="w-[24.5%] h-[52%] opacity-[0.5] relative"
+							@mouseover="ChangeOpacity(index)"
+							@mouseleave="ChangeOpacity(-1)"
+							:class="index <= 3 ? '' : 'mt-[1.8vh]', OpacityValue == index ? 'opacity-100' : ''"
+							style="background-image: url(/html/images/paidbillbackground.png); background-size: 100% 100%"
+						>
+							<div class="w-full h-full absolute flex items-center justify-center">
+								<h2 class="font-['Gilroy-Semibold'] text-[#E13939] text-[1.8vw] leading-[100%] fixtext" style="transform: rotate(-20deg)">{{Locales['paid']}}</h2>
+							</div>
+							<div class="w-[100%] h-[30%] flex items-end justify-center">
+								<div class="w-[92%] h-[92%]">
+									<div class="w-full h-[17%] flex">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.identifiername}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatdate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['due']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatoverduedate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[0.75vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['to']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{Locales['you']}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[0.75vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['invoiceid']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">#{{data.invoiceid}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1%]"></div>
+							<div class="w-full h-[8%] flex items-end justify-center">
+								<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%]">{{Locales['charges']}}</h2>
+							</div>
+							<div class="w-full h-[29%] flex items-center justify-center">
+								<div class="w-[90%] h-full overflow-auto no-scrollbar">
+									<div class="w-full h-[5%]"></div>
+									<div v-for="data in data.reason" class="w-full h-[16%] mt-[0.8vh] flex">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.reason}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.5%]"></div>
+							<div class="w-full h-[16%] flex items-center justify-center">
+								<div class="w-[90%] h-full">
+									<div class="w-full h-[25%] flex mt-[0.8vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['subtotal']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['tax']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">%{{BillingTax}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.2%]"></div>
+							<div class="w-full h-[11.5%] flex items-center justify-center">
+								<h2 class="font-['Gilroy-Bold'] text-black text-[1.2vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.totalAmount).toLocaleString()}}</h2>
+							</div>
+						</div>
+
+						<div class="w-[24.5%] h-[52%] relative" v-for="data in 4"></div>
+					</div>
+				</div>
+			</div>
+			<div v-if="currentPage == 'awatingpayments'" class="w-full h-full absolute">
+				<div v-if="$store.state.PlayerData.createbilling == 'false'" class="w-full h-full">
+					<div class="w-full h-[14%] flex items-end justify-center">
+						<div class="w-[95%] h-[20%] flex items-center justify-between">
+							<h2 class="font-['Gilroy-Semibold'] text-white text-[1.05vw] fixtext">{{Locales['awaitingpayments']}}</h2>
+							<h2 class="font-['Gilroy-Semibold'] text-white text-[1.05vw] fixtext">0 {{Locales['total']}}</h2>
+						</div>
+					</div>
+					<div class="w-full h-[48%] flex items-end justify-center">
+						<div class="w-[21%] h-[52%]">
+							<img src="/html/images/awatingpaymentslarge.png" class="w-full h-full" alt="" />
+						</div>
+					</div>
+					<div class="w-full h-[15%] flex items-center justify-center">
+						<div class="w-[40%] h-[50%]">
+							<h2 class="font-['Gilroy-Semibold'] text-center pl-[3vw] text-center text-white/60 text-[1.05vw] pr-[3vw] leading-[130%]">{{Locales['notauthorized']}}</h2>
+						</div>
+					</div>
+				</div>
+				<div v-else-if="GetAwaitingBills.length <= 0" class="w-full h-full flex items-center justify-center">
+					<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['noawaitingbill']}}</h2>
+				</div>
+				<div v-else class="w-full h-full">
+					<div class="w-full h-[9.4%]"></div>
+					<div class="w-full h-[5.9%] flex items-center justify-center">
+						<div class="w-[94.5%] h-full relative flex justify-between relative">
+							<div class="w-full h-full flex items-center justify-center absolute z-[0]">
+								<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['awaitingpayments']}}</h2>
+							</div>
+							<div class="w-[30.6%] h-full bg-black/20 rounded-[1vw] flex relative">
+								<div class="w-[17%] h-full flex items-center justify-center">
+									<img src="/html/images/searchicon.png" class="h-[55%]" alt="" />
+								</div>
+								<div class="w-[80%] h-full flex">
+									<input
+										type="text"
+										v-model="Models.AwaitingPayments"
+										:placeholder="Locales['searchanybill']"
+										class="w-full h-full bg-transparent font-['Gilroy-Medium'] text-white text-[0.8vw] outline-none border-none placeholder:text-white/50"
+									/>
+								</div>
+							</div>
+							<div class="w-[67%] h-full flex items-center justify-end relative">
+								<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{GetAwaitingBills.length}} {{Locales['total']}}</h2>
+							</div>
+						</div>
+					</div>
+					<div class="w-full h-[83%] flex items-end justify-center">
+						<div class="w-[94.3%] h-[96%] overflow-auto no-scrollbar flex flex-wrap content-start items-start justify-between relative">
+							<div
+								v-for="(data,index) in GetAwaitingBills"
+								class="w-[24.5%] h-[67%] opacity-[0.5] relative"
+								style="background-image: url(/html/images/awatingpaymentsbillbackground.png); background-size: 100% 100%"
+								@mouseover="ChangeOpacity(index)"
+								@mouseleave="ChangeOpacity(-1)"
+								:class="index <= 3 ? '' : 'mt-[1.8vh]', OpacityValue == index ? 'opacity-100' : ''"
+							>
+								<div
+									v-if="CancelBillingID == data.invoiceid"
+									class="w-full flex items-end h-full absolute z-[10]"
+									style="background-image: url(/html/images/cancelbackground.png); background-size: 100% 100%"
+								>
+									<div class="w-full h-[32.5%]">
+										<div class="w-full h-[13%] flex items-center justify-center">
+											<div class="w-[19%] h-[25%] bg-[#123f86] rounded-[0.5vw] cursor-pointer anim-hover-1" @click="CancelBillingID = false"></div>
+										</div>
+										<div class="w-full h-[45%] flex items-center justify-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.9vw] text-center pl-[1vw] pr-[1vw]">{{Locales['areyousurecancelbill']}}</h2>
+										</div>
+										<div class="w-full h-[40%] flex items-center justify-center">
+											<div
+												class="w-[65%] h-[50%] bg-[#e85454] rounded-[0.5vw] border-2 border-black/40 flex items-center justify-center cursor-pointer anim-hover-1"
+												@click="CancelBilling"
+											>
+												<h2 class="font-['Gilroy-Semibold'] text-white text-[0.75vw]">{{Locales['cancel']}}</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="w-[100%] h-[26%] flex items-end justify-center">
+									<div class="w-[92%] h-[92%]">
+										<div class="w-full h-[17%] flex">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.identifiername}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatdate}}</h2>
+											</div>
+										</div>
+										<div class="w-full h-[17%] flex mt-[1vh]">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['due']}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatoverduedate}}</h2>
+											</div>
+										</div>
+										<div class="w-full h-[17%] flex mt-[0.75vh]">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['to']}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.targetname}}</h2>
+											</div>
+										</div>
+										<div class="w-full h-[17%] flex mt-[0.75vh]">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['invoiceid']}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">#{{data.invoiceid}}</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="w-full h-[1%]"></div>
+								<div class="w-full h-[6%] flex items-end justify-center">
+									<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%]">{{Locales['charges']}}</h2>
+								</div>
+								<div class="w-full h-[25%] flex items-center justify-center">
+									<div class="w-[90%] h-full overflow-auto no-scrollbar">
+										<div class="w-full h-[5%]"></div>
+										<div v-for="data in data.reason" class="w-full h-[16%] mt-[0.8vh] flex">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.reason}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="w-full h-[1.5%]"></div>
+								<div class="w-full h-[13.5%] flex items-center justify-center">
+									<div class="w-[90%] h-full">
+										<div class="w-full h-[25%] flex mt-[0.8vh]">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['subtotal']}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+											</div>
+										</div>
+										<div class="w-full h-[25%] flex mt-[1vh]">
+											<div class="w-[50%] h-full flex items-center">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['tax']}}</h2>
+											</div>
+											<div class="w-[50%] h-full flex items-center justify-end">
+												<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">%{{BillingTax}}</h2>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="w-full h-[1.2%]"></div>
+								<div class="w-full h-[11.5%] flex items-center justify-center">
+									<h2 class="font-['Gilroy-Bold'] text-black text-[1.2vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.totalAmount).toLocaleString()}}</h2>
+								</div>
+								<div
+									v-if="CancelBillingID !== data.invoiceid"
+									class="w-full h-[14.5%] flex items-center justify-center cursor-pointer"
+									@click="CancelAwaitingBill(data.invoiceid)"
+									style="background-image: url(/html/images/awatingbillingbottombutton.png); background-size: 100% 100%"
+								>
+									<h2 class="font-['Gilroy-Semibold'] text-white text-[1vw] fixtext">{{Locales['cancel']}}</h2>
+								</div>
+							</div>
+
+							<div class="w-[24.5%] h-[67%]" v-for="data in 4"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div v-if="currentPage == 'taxes'" class="w-full h-full absolute">
+				<div class="w-full h-[9.4%]"></div>
+				<div class="w-full h-[5.9%] flex items-center justify-center">
+					<div class="w-[94.5%] h-full relative flex justify-between relative">
+						<div class="w-full h-full flex items-center justify-center absolute z-[0]">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{Locales['taxes']}}</h2>
+						</div>
+						<div class="w-[30.6%] h-full bg-black/20 rounded-[1vw] flex relative">
+							<div class="w-[17%] h-full flex items-center justify-center">
+								<img src="/html/images/searchicon.png" class="h-[55%]" alt="" />
+							</div>
+							<div class="w-[80%] h-full flex">
+								<input
+									type="text"
+									v-model="Models.TaxesBills"
+									:placeholder="Locales['searchanytaxes']"
+									class="w-full h-full bg-transparent font-['Gilroy-Medium'] text-white text-[0.8vw] outline-none border-none placeholder:text-white/50"
+								/>
+							</div>
+						</div>
+						<div class="w-[67%] h-full flex justify-end relative items-center">
+							<h2 class="font-['Gilroy-Medium'] text-white text-[1vw]">{{GetTaxesBill.length}} {{Locales['total']}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="w-full h-[83%] flex items-end justify-center">
+					<div v-if="GetTaxesBill.length > 0" class="w-[94.3%] h-[96%] overflow-auto no-scrollbar flex flex-wrap content-start items-start justify-between">
+						<div
+							v-for="(data,index) in GetTaxesBill"
+							class="w-[24.5%] h-[67%]"
+							style="background-image: url(/html/images/billbackground.png); background-size: 100% 100%"
+							@mouseover="ChangeOpacity(index)"
+							@mouseleave="ChangeOpacity(-1)"
+							:class="index <= 3 ? '' : 'mt-[1.8vh]', OpacityValue == index ? 'opacity-100' : 'opacity-50'"
+						>
+							<div class="w-[100%] h-[26%] flex items-end justify-center">
+								<div class="w-[92%] h-[92%]">
+									<div class="w-full h-[17%] flex">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{data.identifiername}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatdate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['due']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.formatoverduedate}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[0.75vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['to']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">{{data.targetname}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[17%] flex mt-[0.75vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['invoiceid']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black/40 text-[0.8vw] leading-[100%] fixtext">#{{data.invoiceid}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1%]"></div>
+							<div class="w-full h-[6%] flex items-end justify-center">
+								<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%]">{{Locales['charges']}}</h2>
+							</div>
+							<div class="w-full h-[25%] flex items-center justify-center">
+								<div class="w-[90%] h-full overflow-auto no-scrollbar">
+									<div class="w-full h-[5%]"></div>
+									<div v-for="data in data.reason" class="w-full h-[16%] mt-[0.8vh] flex relative">
+										<div
+											v-if="tooltip.visible && tooltip.index === index"
+											:style="{ top: 100 + '%', left: 0+ 'px' }"
+											class="absolute w-[100%] inline-flex z-[2] bg-black/90 rounded-[0.5vw] z-[5]"
+										>
+											<h2 class="font-['Gilroy-Semibold'] text-[0.8vw] p-[0.5vw] text-white leading-[100%]">
+												{{typeof(tooltip.text) == 'number' ? currencyUnit+' '+Number(tooltip.text).toLocaleString() : tooltip.text}}
+											</h2>
+										</div>
+										<div class="w-[70%] h-full flex items-center relative z-[2]" @mouseover="ShowTooltip($event, data.reason, index)" @mouseleave="HideTooltip">
+											<h2 class="font-['Gilroy-Semibold'] text-[0.8vw] text-black fixtext">{{data.reason}}</h2>
+										</div>
+										<div class="w-[30%] h-full flex items-center justify-end" @mouseover="ShowTooltip($event, Number(data.amount), index)" @mouseleave="HideTooltip">
+											<h2 class="font-['Gilroy-Semibold'] text-[0.8vw] text-black fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.5%]"></div>
+							<div class="w-full h-[13.5%] flex items-center justify-center">
+								<div class="w-[90%] h-full">
+									<div class="w-full h-[25%] flex mt-[0.8vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['subtotal']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(data.amount).toLocaleString()}}</h2>
+										</div>
+									</div>
+									<div class="w-full h-[25%] flex mt-[1vh]">
+										<div class="w-[50%] h-full flex items-center">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">{{Locales['tax']}}</h2>
+										</div>
+										<div class="w-[50%] h-full flex items-center justify-end">
+											<h2 class="font-['Gilroy-Semibold'] text-black text-[0.8vw] leading-[100%] fixtext">%{{BillingTax}}</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w-full h-[1.2%]"></div>
+							<div class="w-full h-[11.5%] flex items-center justify-center">
+								<h2 class="font-['Gilroy-Bold'] text-black text-[1.2vw] leading-[100%] fixtext">{{currencyUnit}} {{Number(GetTaxesAllTotal(data.amount)).toLocaleString()}}</h2>
+							</div>
+							<div
+								class="w-full h-[14.5%] flex items-center justify-center cursor-pointer"
+								@click="PayBills(data.invoiceid)"
+								style="background-image: url(/html/images/taxesbottombutton.png); background-size: 100% 100%"
+							>
+								<h2 class="font-['Gilroy-Semibold'] text-black text-[1vw] leading-[100%] fixtext">{{Locales['pay']}}</h2>
+							</div>
+						</div>
+
+						<div class="w-[24.5%] h-[67%]" v-for="data in 4"></div>
+					</div>
+					<div class="w-[94.3%] h-[96%] flex items-center justify-center" v-else>
+						<h2 class="font-['Gilroy-Semibold'] text-white text-[1vw]">{{Locales['noawaitingbill']}}</h2>
+					</div>
+				</div>
+			</div>
+		</transition-group>
+	</div>
+</div>

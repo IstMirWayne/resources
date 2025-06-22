@@ -1,0 +1,219 @@
+@import "tailwindcss";
+@font-face {
+    font-family: "Gilroy-Bold";
+    src: url("/html/fonts/GILROY-BOLD.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-SemiBold";
+    src: url("/html/fonts/GILROY-SEMIBOLD.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-Medium";
+    src: url("/html/fonts/GILROY-MEDIUM.TTF");
+}
+@font-face {
+    font-family: "Gilroy-Regular";
+    src: url("/html/fonts/GILROY-REGULAR.TTF");
+}
+
+@font-face {
+    font-family: "Gilroy-Black";
+    src: url("/html/fonts/GILROY-BLACK.TTF");
+}
+@font-face {
+    font-family: "Gilroy-Heavy";
+    src: url("/html/fonts/GILROY-HEAVY.TTF");
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
+    /* background-color: rgba(0, 0, 0, 0.502);  */
+}
+
+.borderred {
+    border: 0.5px solid red;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.fixtext {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anim-hover-1 {
+    transition: all 0.3s;
+}
+
+.anim-hover-1:hover {
+    transform: scale(1.05);
+    transition: all 0.3s;
+}
+
+.opacitypage-enter-active {
+    animation: fadein-enter 0.3s ease forwards;
+}
+
+.opacitypage-leave-active {
+    animation: fadeout-leave 0.3s ease forwards;
+}
+
+@keyframes fadein-enter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeout-leave {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.switch {
+    --button-width: 2vw; /* Orijinal genişliğin %20'si */
+    --button-height: 2vh; /* Orijinal yüksekliğin %20'si */
+    --toggle-diameter: 1.5vh; /* Orijinal çapın %20'si */
+    --button-toggle-offset: calc((var(--button-height) - var(--toggle-diameter)) / 2);
+    --toggle-shadow-offset: 0.2vw; /* Orijinal gölge ofsetinin %20'si */
+    --toggle-wider: 0.4vw; /* Orijinal genişleme oranının %20'si */
+    --color-grey: #cccccc;
+    --color-green: #4296f4;
+}
+
+.slider {
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    background-color: var(--color-grey);
+    border-radius: calc(var(--button-height) / 2);
+    position: relative;
+    transition: 0.3s all ease-in-out;
+}
+
+.slider::after {
+    content: "";
+    display: inline-block;
+    width: var(--toggle-diameter);
+    height: var(--toggle-diameter);
+    background-color: #fff;
+    border-radius: calc(var(--toggle-diameter) / 2);
+    position: absolute;
+    top: var(--button-toggle-offset);
+    transform: translateX(var(--button-toggle-offset));
+    box-shadow: var(--toggle-shadow-offset) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+    transition: 0.3s all ease-in-out;
+}
+
+.switch input[type="checkbox"]:checked + .slider {
+    background-color: var(--color-green);
+}
+
+.switch input[type="checkbox"]:checked + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+    box-shadow: calc(var(--toggle-shadow-offset) * -1) 0 calc(var(--toggle-shadow-offset) * 4) rgba(0, 0, 0, 0.1);
+}
+
+.switch input[type="checkbox"] {
+    display: none;
+}
+
+.switch input[type="checkbox"]:active + .slider::after {
+    width: calc(var(--toggle-diameter) + var(--toggle-wider));
+}
+
+.switch input[type="checkbox"]:checked:active + .slider::after {
+    transform: translateX(calc(var(--button-width) - var(--toggle-diameter) - var(--button-toggle-offset)));
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 0.2vw solid black;
+    border-bottom-color: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.container {
+    position: relative;
+    cursor: pointer;
+    font-size: 0.7vw;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    user-select: none;
+    border: 3px solid #54e8b1;
+    display: block;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    background-color: #54e8b1;
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 100ms ease;
+}
+
+.container input:checked ~ .checkmark:after {
+    transform: scale(1);
+}
+
+.categorybutton:hover {
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nearbyplayers {
+    transition: all 0.3s;
+}
+.nearbyplayers:hover {
+    transform: scale(1.05) !important;
+    transition: all 0.3s;
+    cursor: pointer;
+}
