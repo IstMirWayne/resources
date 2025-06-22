@@ -1,135 +1,136 @@
-<!DOCTYPE html><html>
-	<head>
-		<title>mumble-voip</title>
-		<style>
-			.info-container {
-				position: absolute;
-				bottom: 0%;
-				right: 0%;
-				text-align: right;
-				padding: 5px;
-				font-family: sans-serif;
-				font-weight: bold;
-				color: rgb(1, 176, 240);
-				font-size: 0.5vw;
-				text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-			}
-			.talking {
-				color: rgba(244, 196, 65, 255);
-			}
-			.watermark {
-				position: fixed;
-				top: 0%;
-				right: 0%;
-				text-align: right;
-				opacity: 0.4;
-				z-index: 99;
-				color: rgb(184, 185, 185);
-				font-family: Arial;
-				font-weight: normal;
-				font-size: 0.5vw;
-				opacity: 0.8;
-			}
-			.radio-list-container {
-				position: absolute;
-				top: 1%;
-				right: 0%;
-				text-align: right;
-				padding: 5px;
-				font-family: sans-serif;
-				font-weight: bold;
-				color: rgb(1, 176, 240);
-				font-size: 0.5vw;
-				text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-			}
-			#radioMenu {
-				display: none;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				background: #111;
-				padding: 20px;
-				border-radius: 10px;
-				text-align: center;
-				box-shadow: 0 0 10px #00f;
-				color: white;
-				z-index: 1000;
-			}
-			#radioMenu input[type='number'] {
-				font-size: 16px;
-				padding: 5px;
-				width: 60px;
-				text-align: center;
-				margin-top: 10px;
-			}
-			#radioMenu button {
-				margin: 10px;
-				padding: 10px 20px;
-				font-size: 16px;
-				background: #222;
-				color: white;
-				border: none;
-				border-radius: 5px;
-				cursor: pointer;
-			}
-		</style>
-		<script type="text/javascript">
-			let speakerEnabled = true;
-			window.addEventListener("message", function(event) {
-				var item = event.data;
-				if (item.type === 'openRadio') {
-					document.getElementById("radioMenu").style.display = "block";
-				}
-				// ... (bestehende Logik bleibt unverändert)
-			});
-			function setRadioChannel() {
-				const val = document.getElementById('channelInput').value;
-				fetch(https://${GetParentResourceName()}/setRadioChannel, {
-					method: 'POST',
-					body: JSON.stringify({ channel: parseInt(val) })
-				});
-				document.getElementById('channelDisplay').textContent = val;
-			}
-			function changeChannel(amount) {
-				const input = document.getElementById('channelInput');
-				let newVal = parseInt(input.value) + amount;
-				if (newVal < 1) newVal = 1;
-				if (newVal > 999) newVal = 999;
-				input.value = newVal;
-				setRadioChannel();
-			}
-			function closeRadioMenu() {
-				document.getElementById("radioMenu").style.display = "none";
-				fetch(https://${GetParentResourceName()}/close, {
-					method: 'POST'
-				});
-			}
-		</script>
-	</head>
-	<body>
-		<audio id="audio_on" src="mic_click_on.ogg"></audio>
-		<audio id="audio_off" src="mic_click_off.ogg"></audio>
-		<div class="watermark">mumble-voip by Frazzle.</div>
-		<div class="radio-list-container" id="voip-radio-list"></div>
-		<div class="info-container">
-			<div>[Mumble] <span id="voip-mode">Initialising</span></div>
-			<div id="voip-radio"></div>
-			<div id="voip-call"></div>
-			<div id="voip-warning"></div>
-		</div>
-		<div id="radioMenu">
-			<h2>📻 Funkgerät</h2>
-			<p>Kanal: <span id="channelDisplay">1</span></p>
-			<input type="number" id="channelInput" min="1" max="999" value="1">
-			<div>
-				<button onclick="changeChannel(-1)">-</button>
-				<button onclick="setRadioChannel()">Wechseln</button>
-				<button onclick="changeChannel(1)">+</button>
-			</div>
-			<div>
-				<button onclick="closeRadioMenu()">Schließen</button>
-			</div>
-		</div>
-	</body>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mumble-voip</title>
+    <style>
+        .info-container {
+            position: absolute;
+            bottom: 0%;
+            right: 0%;
+            text-align: right;
+            padding: 5px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(1, 176, 240);
+            font-size: 0.5vw;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+        .talking {
+            color: rgba(244, 196, 65, 255);
+        }
+        .watermark {
+            position: fixed;
+            top: 0%;
+            right: 0%;
+            text-align: right;
+            opacity: 0.4;
+            z-index: 99;
+            color: rgb(184, 185, 185);
+            font-family: Arial;
+            font-weight: normal;
+            font-size: 0.5vw;
+            opacity: 0.8;
+        }
+        .radio-list-container {
+            position: absolute;
+            top: 1%;
+            right: 0%;
+            text-align: right;
+            padding: 5px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: rgb(1, 176, 240);
+            font-size: 0.5vw;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        }
+        #radioMenu {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #111;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px #00f;
+            color: white;
+            z-index: 1000;
+        }
+        #radioMenu input[type='number'] {
+            font-size: 16px;
+            padding: 5px;
+            width: 60px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        #radioMenu button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        let speakerEnabled = true;
+        window.addEventListener("message", function(event) {
+            var item = event.data;
+            if (item.type === 'openRadio') {
+                document.getElementById("radioMenu").style.display = "block";
+            }
+        });
+        function setRadioChannel() {
+            const val = document.getElementById('channelInput').value;
+            fetch(`https://${GetParentResourceName()}/setRadioChannel`, {
+                method: 'POST',
+                body: JSON.stringify({ channel: parseInt(val) })
+            });
+            document.getElementById('channelDisplay').textContent = val;
+        }
+        function changeChannel(amount) {
+            const input = document.getElementById('channelInput');
+            let newVal = parseInt(input.value) + amount;
+            if (newVal < 1) newVal = 1;
+            if (newVal > 999) newVal = 999;
+            input.value = newVal;
+            setRadioChannel();
+        }
+        function closeRadioMenu() {
+            document.getElementById("radioMenu").style.display = "none";
+            fetch(`https://${GetParentResourceName()}/close`, {
+                method: 'POST'
+            });
+        }
+    </script>
+</head>
+<body>
+    <audio id="audio_on" src="mic_click_on.ogg"></audio>
+    <audio id="audio_off" src="mic_click_off.ogg"></audio>
+    <div class="watermark">mumble-voip by Frazzle.</div>
+    <div class="radio-list-container" id="voip-radio-list"></div>
+    <div class="info-container">
+        <div>[Mumble] <span id="voip-mode">Initialising</span></div>
+        <div id="voip-radio"></div>
+        <div id="voip-call"></div>
+        <div id="voip-warning"></div>
+    </div>
+    <div id="radioMenu">
+        <h2>📻 Funkgerät</h2>
+        <p>Kanal: <span id="channelDisplay">1</span></p>
+        <input type="number" id="channelInput" min="1" max="999" value="1">
+        <div>
+            <button onclick="changeChannel(-1)">-</button>
+            <button onclick="setRadioChannel()">Wechseln</button>
+            <button onclick="changeChannel(1)">+</button>
+        </div>
+        <div>
+            <button onclick="closeRadioMenu()">Schließen</button>
+        </div>
+    </div>
+</body>
 </html>
