@@ -285,6 +285,21 @@ function MuteVehiclePassengers(playerData)
 end
 
 -- Events
+RegisterCommand("openradio", function()
+    SetNuiFocus(true, true)
+    SendNUIMessage({ type = "openRadio" })
+end)
+
+RegisterNUICallback("setRadioChannel", function(data, cb)
+    exports["mumble-voip"]:SetRadioChannel(data.channel)
+    cb("ok")
+end)
+
+RegisterNUICallback("close", function(_, cb)
+    SetNuiFocus(false, false)
+    cb("ok")
+end)
+
 AddEventHandler("onClientResourceStart", function(resName) -- Initialises the script, sets up voice range, voice targets and request sync with server
 	if GetCurrentResourceName() ~= resName then
 		return

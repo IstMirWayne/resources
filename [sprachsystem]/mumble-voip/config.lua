@@ -47,7 +47,7 @@ mumbleConfig = {
 
 	use3dAudio = true, -- 3D-Audio aktivieren
 	useSendingRangeOnly = true, -- Nur die eigene Reichweite verwenden
-	useNativeAudio = false, -- Kein natives GTA-Audio (z. B. Raumklang)
+	useNativeAudio = true, -- Kein natives GTA-Audio (z. B. Raumklang)
 	useExternalServer = false, -- Kein externer Sprachserver notwendig
 	externalAddress = "127.0.0.1",
 	externalPort = 30120,
