@@ -10,6 +10,21 @@ local Houses = {}
 local cam = nil
 local cam2 = nil
 
+-- === Hilfsfunktion: Aussehen neu laden ===
+local function LoadSavedAppearance()
+    local model = mp_m_freemode_01
+    RequestModel(model)
+    while not HasModelLoaded(model) do Wait(0) end
+    SetPlayerModel(PlayerId(), model)
+    SetModelAsNoLongerNeeded(model)
+
+    QBCore.Functions.TriggerCallback('illenium-appearance:server:getAppearance', function(appearance)
+        if appearance then
+            TriggerEvent('illenium-appearance:client:loadAppearance', appearance)
+        end
+    end)
+end
+
 -- Functions
 
 local function SetDisplay(bool)
@@ -136,6 +151,7 @@ RegisterNUICallback('chooseAppa', function(data, cb)
     TriggerServerEvent('apartments:server:CreateApartment', appaYeet, Apartments.Locations[appaYeet].label, true)
     TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
     TriggerEvent('QBCore:Client:OnPlayerLoaded')
+    LoadSavedAppearance()
     FreezeEntityPosition(ped, false)
     RenderScriptCams(false, true, 500, true, true)
     SetCamActive(cam, false)
@@ -189,12 +205,14 @@ RegisterNUICallback('spawnplayer', function(data, cb)
         end
         TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
         TriggerEvent('QBCore:Client:OnPlayerLoaded')
+        LoadSavedAppearance()
         PostSpawnPlayer()
     elseif type == 'house' then
         PreSpawnPlayer()
         TriggerEvent('qb-houses:client:enterOwnedHouse', location)
         TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
         TriggerEvent('QBCore:Client:OnPlayerLoaded')
+        LoadSavedAppearance()
         TriggerServerEvent('qb-houses:server:SetInsideMeta', 0, false)
         TriggerServerEvent('qb-apartments:server:SetInsideMeta', 0, 0, false)
         PostSpawnPlayer()
@@ -204,6 +222,7 @@ RegisterNUICallback('spawnplayer', function(data, cb)
         SetEntityCoords(ped, pos.x, pos.y, pos.z)
         TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
         TriggerEvent('QBCore:Client:OnPlayerLoaded')
+        LoadSavedAppearance()
         TriggerServerEvent('qb-houses:server:SetInsideMeta', 0, false)
         TriggerServerEvent('qb-apartments:server:SetInsideMeta', 0, 0, false)
         Wait(500)
