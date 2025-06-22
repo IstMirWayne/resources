@@ -284,17 +284,25 @@ function MuteVehiclePassengers(playerData)
 	return changed
 end
 
--- Events
+-- Öffnet das Radio UI mit /openradio
 RegisterCommand("openradio", function()
     SetNuiFocus(true, true)
     SendNUIMessage({ type = "openRadio" })
 end)
 
+-- Wechselt den Funkkanal
 RegisterNUICallback("setRadioChannel", function(data, cb)
-    exports["mumble-voip"]:SetRadioChannel(data.channel)
+    local channel = tonumber(data.channel)
+    if channel and channel > 0 then
+        exports["mumble-voip"]:SetRadioChannel(channel)
+        print("Wechsle zu Kanal:", channel)
+    else
+        print("Ungültiger Kanal:", data.channel)
+    end
     cb("ok")
 end)
 
+-- Schließt das UI
 RegisterNUICallback("close", function(_, cb)
     SetNuiFocus(false, false)
     cb("ok")
