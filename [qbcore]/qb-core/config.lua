@@ -41,19 +41,19 @@ QBConfig.Player.PlayerDefaults = {
     },
     job = {
         name = 'unemployed',
-        label = 'Civilian',
+        label = 'Zivilist',
         payment = 10,
         type = 'none',
         onduty = false,
         isboss = false,
         grade = {
-            name = 'Freelancer',
+            name = 'Arbeitslos',
             level = 0
         }
     },
     gang = {
         name = 'none',
-        label = 'No Gang Affiliation',
+        label = 'Keine Gang Zugehörigkeit',
         isboss = false,
         grade = {
             name = 'none',
