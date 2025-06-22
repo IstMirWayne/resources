@@ -1,2 +1,1 @@
-{
-}
+{"247supermarket":{"products":[{"name":"tosti","slot":1,"amount":40,"price":2},{"name":"water_bottle","slot":2,"amount":44,"price":2},{"name":"kurkakola","slot":3,"amount":50,"price":2},{"name":"twerks_candy","slot":4,"amount":50,"price":2},{"name":"snikkel_candy","slot":5,"amount":50,"price":2},{"name":"sandwich","slot":6,"amount":50,"price":2},{"name":"beer","slot":7,"amount":50,"price":7},{"name":"whiskey","slot":8,"amount":50,"price":10},{"name":"vodka","slot":9,"amount":50,"price":12},{"name":"bandage","slot":10,"amount":50,"price":100},{"name":"lighter","slot":11,"amount":50,"price":2},{"name":"rolling_paper","slot":12,"amount":5000,"price":2}]}}
