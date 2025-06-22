@@ -38,6 +38,10 @@ local function createItem(name, type)
         TriggerClientEvent('consumables:client:' .. type, source, item.name)
     end)
 end
+
+QBCore.Functions.CreateUseableItem("radio", function(source, item)
+    TriggerClientEvent("xRadio:openRadio", source)
+end)
 ----------- / Drug
 
 QBCore.Functions.CreateUseableItem('joint', function(source, item)
