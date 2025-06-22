@@ -35,17 +35,27 @@ end)
 -- Handlers
 
 AddEventHandler('playerDropped', function()
+    local src = source
+
+    -- Inventar freigeben
     for _, inv in pairs(Inventories) do
-        if inv.isOpen == source then
+        if inv.isOpen == src then
             inv.isOpen = false
         end
     end
+
+    -- ✅ Inventar speichern
+    exports['qb-inventory']:SaveInventory(src, false)
 end)
 
 AddEventHandler('txAdmin:events:serverShuttingDown', function()
     for inventory, data in pairs(Inventories) do
         if data.isOpen then
-            MySQL.prepare('INSERT INTO inventories (identifier, items) VALUES (?, ?) ON DUPLICATE KEY UPDATE items = ?', { inventory, json.encode(data.items), json.encode(data.items) })
+            MySQL.prepare('INSERT INTO inventories (identifier, items) VALUES (?, ?) ON DUPLICATE KEY UPDATE items = ?', {
+                inventory,
+                json.encode(data.items),
+                json.encode(data.items)
+            })
         end
     end
 end)
