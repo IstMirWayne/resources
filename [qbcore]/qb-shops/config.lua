@@ -47,7 +47,7 @@ Config.Products = {
         { name = 'repairkit',         price = 250, amount = 50, requiredJob = { 'mechanic', 'police' } },
         { name = 'screwdriverset',    price = 350, amount = 50 },
         { name = 'phone',             price = 850, amount = 50 },
-        { name = 'radio',             price = 250, amount = 50 },
+        { name = 'radio',             price = 250, amount = 50, requiredJob = { 'sast', 'bcso', 'lspd' } },
         { name = 'binoculars',        price = 50,  amount = 50 },
         { name = 'firework1',         price = 50,  amount = 50 },
         { name = 'firework2',         price = 50,  amount = 50 },

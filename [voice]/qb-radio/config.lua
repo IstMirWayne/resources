@@ -3,46 +3,13 @@ Config = {}
 Config.RadioItem = 'radio'
 
 Config.RestrictedChannels = {
-    [1] = {
-        police = true,
-        ambulance = true
-    },
-    [2] = {
-        police = true,
-        ambulance = true
-    },
-    [3] = {
-        police = true,
-        ambulance = true
-    },
-    [4] = {
-        police = true,
-        ambulance = true
-    },
-    [5] = {
-        police = true,
-        ambulance = true
-    },
-    [6] = {
-        police = true,
-        ambulance = true
-    },
-    [7] = {
-        police = true,
-        ambulance = true
-    },
-    [8] = {
-        police = true,
-        ambulance = true
-    },
-    [9] = {
-        police = true,
-        ambulance = true
-    },
-    [10] = {
-        police = true,
-        ambulance = true
-    }
+    [1] = { lspd = true },                     -- LSPD Interner Funkkanal
+    [2] = { bcso = true },                     -- BCSO Interner Funkkanal
+    [3] = { sast = true },                     -- SAST Interner Funkkanal
+
+    [4] = { lspd = true, bcso = true, sast = true }, -- Gemeinsamer Funk 1
+    [5] = { lspd = true, bcso = true, sast = true }, -- Gemeinsamer Funk 2
+    [6] = { lspd = true, bcso = true, sast = true }, -- Gemeinsamer Funk 3
 }
 
 Config.MaxFrequency = 500

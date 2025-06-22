@@ -1,13 +1,13 @@
 local Translations ={
-    ["not_on_radio"] = "You're not connected to a signal",
-    ["joined_to_radio"] = "You're connected to: %{channel}",
-    ["restricted_channel_error"] = "You can not connect to this signal!",
-    ["invalid_radio"] = "This frequency is not available.",
-    ["you_on_radio"] = "You're already connected to this channel",
-    ["you_leave"] = "You left the channel.",
-    ['volume_radio'] = 'New volume %{value}',
-    ['decrease_radio_volume'] = 'The radio is already set to maximum volume',
-    ['increase_radio_volume'] = 'The radio is already set to the lowest volume',
+    ["not_on_radio"] = "Du bist nicht mit einem Signal verbunden",
+    ["joined_to_radio"] = "Du bist verbunden mit: %{channel}",
+    ["restricted_channel_error"] = "Du kannst dich nicht mit diesem Signal verbinden!",
+    ["invalid_radio"] = "Diese Frequenz ist nicht verfügbar.",
+    ["you_on_radio"] = "Du bist bereits mit diesem Kanal verbunden",
+    ["you_leave"] = "Du hast den Kanal verlassen.",
+    ['volume_radio'] = 'Neue Lautstärke %{value}',
+    ['decrease_radio_volume'] = 'Das Radio ist bereits auf maximaler Lautstärke eingestellt',
+    ['increase_radio_volume'] = 'Das Radio ist bereits auf der niedrigsten Lautstärke eingestellt',
 }
 
 Lang = Lang or Locale:new({
