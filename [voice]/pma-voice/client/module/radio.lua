@@ -257,7 +257,7 @@ RegisterCommand('-radiotalk', function()
 	end
 end, false)
 if gameVersion == 'fivem' then
-	RegisterKeyMapping('+radiotalk', 'Talk over Radio', 'keyboard', GetConvar('voice_defaultRadio', 'LMENU'))
+	RegisterKeyMapping('+radiotalk', 'Funken', 'keyboard', GetConvar('voice_defaultRadio', 'capslock'))
 end
 
 local function setRadioTalkAnim(dict, anim)

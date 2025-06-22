@@ -291,11 +291,11 @@ end)
 if gameVersion == 'redm' then
 	function on_key_up() end
 
-	local KEY_F11 = 0x7A
+	local KEY_F10 = 0x7A
 
 	RegisterRawKeymap("pma-voice_proximityCycle", on_key_up, function()
 		ExecuteCommand('cycleproximity')
-	end, KEY_F11, true)
+	end, KEY_F10, true)
 
 	local KEY_LEFT_ALT = 0xA4
 
