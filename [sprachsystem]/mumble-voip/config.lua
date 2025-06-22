@@ -11,7 +11,7 @@ mumbleConfig = {
 	},
 	speakerRange = 1.5, -- Entfernung, um Gespräche anderer (Funk/Telefon) mitzuhören
 	callSpeakerEnabled = true, -- Telefongespräche für Umstehende hörbar
-	radioEnabled = false, -- Funk aktivieren
+	radioEnabled = true, -- Funk aktivieren
 	micClicks = true, -- Mikrofonklicks aktivieren
 	micClickOn = true, -- Klick beim Sprechen
 	micClickOff = true, -- Klick beim Loslassen
@@ -23,7 +23,7 @@ mumbleConfig = {
 			key = 57, -- F10 für Sprachreichweite
 		},
 		radio = {
-			pressed = false,
+			pressed = true,
 			key = 137, -- CAPSLOCK für Funk
 		},
 		speaker = {
