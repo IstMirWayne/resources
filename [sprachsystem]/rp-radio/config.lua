@@ -40,12 +40,12 @@ radioConfig = {
 
     Frequency = {
         Private = {
-            [1] = true, -- Kanal 1 ist privat (z. B. LSPD)
-            [2] = true, -- Kanal 2 ist privat (z. B. BCSO)
-            [3] = true, -- Kanal 3 ist privat (z. B. SAST)
-            [4] = true, -- Gemeinsamer Einsatzkanal 1
-            [5] = true, -- Gemeinsamer Einsatzkanal 2
-            [6] = true, -- Gemeinsamer Einsatzkanal 3
+            [10] = true, -- Kanal 1 ist privat (z. B. LSPD)
+            [211] = true, -- Kanal 2 ist privat (z. B. BCSO)
+            [311] = true, -- Kanal 3 ist privat (z. B. SAST)
+            [411] = true, -- Gemeinsamer Einsatzkanal 1
+            [511] = true, -- Gemeinsamer Einsatzkanal 2
+            [116] = true, -- Gemeinsamer Einsatzkanal 3
         },
         Current = 1,         -- Nicht ändern
         CurrentIndex = 1,    -- Nicht ändern
