@@ -1,4 +1,4 @@
-Locales["de"] = {
+Locales["en"] = {
     UI = {
         modal = {
             save = {
