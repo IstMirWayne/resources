@@ -16,11 +16,11 @@ Config.AFK = {
     kickInCharMenu = false      -- Set to true if you want to kick players for being AFK even when they are in the character menu.
 }
 
-Config.HandsUp = {
-    command = 'hu',
-    keybind = 'X',
-    controls = { 24, 25, 47, 58, 59, 63, 64, 71, 72, 75, 140, 141, 142, 143, 257, 263, 264 }
-}
+--Config.HandsUp = {
+--    command = 'hu',
+--    keybind = 'X',
+--   controls = { 24, 25, 47, 58, 59, 63, 64, 71, 72, 75, 140, 141, 142, 143, 257, 263, 264 }
+--}
 
 Config.Binoculars = {
     zoomSpeed = 10.0,        -- camera zoom speed

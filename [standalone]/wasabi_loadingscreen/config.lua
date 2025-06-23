@@ -154,6 +154,7 @@ Config.KeyboardKeys = {
     f1 = "Radialmenü öffnen",
     f2 = "Funkgerät öffnen (RP-Radio)",
     f6 = "Job-Menü öffnen (Creator)",
+    f8 = "FiveM Konsole öffnen",
     f9 = "ALPR umschalten",
     f10 = "Sprachreichweite ändern (Mumble)",
     f11 = "Dienstmenü öffnen",
@@ -166,7 +167,7 @@ Config.KeyboardKeys = {
     lshift_e = "Nagelbänder platzieren/entfernen",
     u = "Ped ins Gefängnis bringen",
     j = "Ausweis anzeigen",
-    h = "Multijob-Menü öffnen",
+    f7 = "Multijob-Menü öffnen",
     b = "MDT öffnen",
     lshift = "Verkehrskontrolle starten/abbrechen",
     lctrl = "Tempomat an/aus",
@@ -182,7 +183,7 @@ Config.KeyboardKeys = {
     left_alt = "Drittes Auge öffnen",
 
     -- Kommunikation
-    capslock = "Funk sprechen (RP-Radio)",
+    caps = "Funken",
 
     -- Schnellslots
     ["1"] = "Slot 1 benutzen",

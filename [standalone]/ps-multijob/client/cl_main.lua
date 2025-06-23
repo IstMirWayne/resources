@@ -69,6 +69,6 @@ end)
 
 RegisterCommand("jobmenu", OpenUI, false)
 
-RegisterKeyMapping('jobmenu', "Show Job Management", "keyboard", "J")
+RegisterKeyMapping('jobmenu', "Show Job Management", "keyboard", "F7")
 
 TriggerEvent('chat:removeSuggestion', '/jobmenu')
