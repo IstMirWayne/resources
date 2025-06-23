@@ -47,6 +47,12 @@ exports('GetSharedJobs', GetSharedJobs)
 local function GetSharedGangs()
     return QBShared.Gangs
 end
+
+RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+    Wait(1000)
+    TriggerEvent("illenium-appearance:client:reloadSkin")
+end)
+
 exports('GetSharedGangs', GetSharedGangs)
 
 
