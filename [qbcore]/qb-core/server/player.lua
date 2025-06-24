@@ -153,6 +153,20 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
     return QBCore.Player.CreatePlayer(PlayerData, Offline)
 end
 
+  function self.Functions.GetCardSlot(cardNumber, cardType)
+        local item = tostring(cardType):lower()
+        local slots = exports['codem-inventory']:GetSlotsByItem(self.PlayerData.items, item)
+        for _, slot in pairs(slots) do
+            if slot then
+                if self.PlayerData.items[slot].info.cardNumber == cardNumber then
+                    return slot
+                end
+            end
+        end
+        return nil
+    end
+
+
 -- On player logout
 
 function QBCore.Player.Logout(source)
@@ -487,19 +501,21 @@ function QBCore.Player.Save(source)
     local pcoords = GetEntityCoords(ped)
     local PlayerData = QBCore.Players[source].PlayerData
     if PlayerData then
-        MySQL.insert('INSERT INTO players (citizenid, cid, license, name, money, charinfo, job, gang, position, metadata) VALUES (:citizenid, :cid, :license, :name, :money, :charinfo, :job, :gang, :position, :metadata) ON DUPLICATE KEY UPDATE cid = :cid, name = :name, money = :money, charinfo = :charinfo, job = :job, gang = :gang, position = :position, metadata = :metadata', {
-            citizenid = PlayerData.citizenid,
-            cid = tonumber(PlayerData.cid),
-            license = PlayerData.license,
-            name = PlayerData.name,
-            money = json.encode(PlayerData.money),
-            charinfo = json.encode(PlayerData.charinfo),
-            job = json.encode(PlayerData.job),
-            gang = json.encode(PlayerData.gang),
-            position = json.encode(pcoords),
-            metadata = json.encode(PlayerData.metadata)
-        })
-        if GetResourceState('codem-inventory') ~= 'missing' then exports['codem-inventory']:SaveInventory(source) end
+        MySQL.insert(
+            'INSERT INTO players (citizenid, cid, license, name, money, charinfo, job, gang, position, metadata) VALUES (:citizenid, :cid, :license, :name, :money, :charinfo, :job, :gang, :position, :metadata) ON DUPLICATE KEY UPDATE cid = :cid, name = :name, money = :money, charinfo = :charinfo, job = :job, gang = :gang, position = :position, metadata = :metadata',
+            {
+                citizenid = PlayerData.citizenid,
+                cid = tonumber(PlayerData.cid),
+                license = PlayerData.license,
+                name = PlayerData.name,
+                money = json.encode(PlayerData.money),
+                charinfo = json.encode(PlayerData.charinfo),
+                job = json.encode(PlayerData.job),
+                gang = json.encode(PlayerData.gang),
+                position = json.encode(pcoords),
+                metadata = json.encode(PlayerData.metadata)
+            })
+            if GetResourceState('codem-inventory') ~= 'missing' then exports['codem-inventory']:SaveInventory(source) end
         QBCore.ShowSuccess(resourceName, PlayerData.name .. ' PLAYER SAVED!')
     else
         QBCore.ShowError(resourceName, 'ERROR QBCORE.PLAYER.SAVE - PLAYERDATA IS EMPTY!')
@@ -508,18 +524,20 @@ end
 
 function QBCore.Player.SaveOffline(PlayerData)
     if PlayerData then
-        MySQL.insert('INSERT INTO players (citizenid, cid, license, name, money, charinfo, job, gang, position, metadata) VALUES (:citizenid, :cid, :license, :name, :money, :charinfo, :job, :gang, :position, :metadata) ON DUPLICATE KEY UPDATE cid = :cid, name = :name, money = :money, charinfo = :charinfo, job = :job, gang = :gang, position = :position, metadata = :metadata', {
-            citizenid = PlayerData.citizenid,
-            cid = tonumber(PlayerData.cid),
-            license = PlayerData.license,
-            name = PlayerData.name,
-            money = json.encode(PlayerData.money),
-            charinfo = json.encode(PlayerData.charinfo),
-            job = json.encode(PlayerData.job),
-            gang = json.encode(PlayerData.gang),
-            position = json.encode(PlayerData.position),
-            metadata = json.encode(PlayerData.metadata)
-        })
+        MySQL.Async.insert(
+            'INSERT INTO players (citizenid, cid, license, name, money, charinfo, job, gang, position, metadata) VALUES (:citizenid, :cid, :license, :name, :money, :charinfo, :job, :gang, :position, :metadata) ON DUPLICATE KEY UPDATE cid = :cid, name = :name, money = :money, charinfo = :charinfo, job = :job, gang = :gang, position = :position, metadata = :metadata',
+            {
+                citizenid = PlayerData.citizenid,
+                cid = tonumber(PlayerData.cid),
+                license = PlayerData.license,
+                name = PlayerData.name,
+                money = json.encode(PlayerData.money),
+                charinfo = json.encode(PlayerData.charinfo),
+                job = json.encode(PlayerData.job),
+                gang = json.encode(PlayerData.gang),
+                position = json.encode(PlayerData.position),
+                metadata = json.encode(PlayerData.metadata)
+            })
         if GetResourceState('codem-inventory') ~= 'missing' then exports['codem-inventory']:SaveInventory(PlayerData, true) end
         QBCore.ShowSuccess(resourceName, PlayerData.name .. ' OFFLINE PLAYER SAVED!')
     else
