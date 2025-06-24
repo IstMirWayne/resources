@@ -29,13 +29,13 @@ Config.CheckForUpdates = true -- Check for updates? Who would not want to know u
 -- 'cs' (Czech)
 -- If you would like us to add a language, join our discord and create a ticket!
 -- All locale strings can be found in /game/configuration/locales/
-Config.Language = 'en'
-Config.UIColor = '#e61f09' -- Can be 'red', 'blue', or a hex '#FF0000'
+Config.Language = 'de'
+Config.UIColor = 'blue' -- Can be 'red', 'blue', or a hex '#FF0000'
 -- Config.DeathScreenEffects = true -- OBSOLETE RIGHT NOW
 
 -- Which style do you want to use for death UI?(Current options: 1, 2, 3, 4, 5)
 -- Check docs for examples of all types! https://docs.wasabiscripts.com
-Config.DeathScreenType = 3
+Config.DeathScreenType = 5
 -- If you want to use the previous death screen(Draw text, not recommended) see docs
 
 Config.ShowEMSCountOnDeath = true -- Show active ambulance count in death UI? (Gives count in death screen of all jobs active from Config.ambulanceJobs)
@@ -44,13 +44,13 @@ Config.ShowEMSCountOnDeath = true -- Show active ambulance count in death UI? (G
 Config.OldQBManagement = false -- If you are using QBCore and want to use the old QB Management system
 
 Config.ambulanceJobs = {       -- Jobs that are considered ambulance jobs (If unsure, likely leave the way it is)
-    'ambulance',               -- You must have a job with this name registered
-    --'emt',             -- They will be treated just like EMS (Job menu, loctions access, etc)
-    --'doctor',
+    'sast',               -- You must have a job with this name registered
+    'lspd',             -- They will be treated just like EMS (Job menu, loctions access, etc)
+    'bcso',
     --'fire',
 }
 
-Config.MuteDeadPlayers = false -- If a player is dead, should he be muted?
+Config.MuteDeadPlayers = true -- If a player is dead, should he be muted?
 
 -- Logs
 Config.DeathLogs = false  -- Enable death logs via Discord webhook?(Set up in configuration/deathlogs.lua)
@@ -59,7 +59,7 @@ Config.CombatLogs = false -- Enable combat logs via Discord webhook? (Logs when 
 Config.LogIPs = false     -- If Config.DeathLogs/Config.ReviveLogs enabled, do you want to logs IP addresses as well?
 
 -- Stretcher Settings
-Config.EnableStretcher = true     -- Enable stretcher system?
+Config.EnableStretcher = false     -- Enable stretcher system?
 Config.StretcherProp = 'wasabi_stretcher'
 Config.StretcherKey = 38          -- Key to place the stretcher on the ground
 Config.HoldingStretcherOffSet = { -- Offset for holding stretcher
@@ -86,7 +86,7 @@ Config.ProgressCircleLocation = 'bottom' -- Where you want the progress circle l
 -- Choices: 'bottom' and 'middle'
 
 Config.policeCanTreat = {
-    enabled = true, -- Police can treat patients?
+    enabled = false, -- Police can treat patients?
     jobs = {        -- Police / other jobs
         'police',
         --    'sheriff',
@@ -176,7 +176,7 @@ Config.DeathAnimation = {
 
 -- Knockout Feature (If you want players to be knocked out)
 Config.KnockoutFeature = {
-    enabled = false,           -- Enable knockout features? (player's can knock eachother out using fist fighting)
+    enabled = true,           -- Enable knockout features? (player's can knock eachother out using fist fighting)
     regainHealth = 20,      -- Amount of health to regain while knocked out (Set to false to disable)
     healthForKnockout = 150,   -- At what HP will player knockout from fist fighting
     fistDamageModifier = 0.25, -- How much damage will fist cause? (1.0 is default, 0.5 is half as strong, etc)
@@ -293,16 +293,16 @@ Config.phoneDistress = false        -- Options: 'gks' (GKS Phone - ESX ONLY) / '
 Config.customCarlock = false        -- If you use wasabi_carlock OR qb-carlock(Or want to add your own key system to wasabi_bridge/customize/cl_customize.lua)
 Config.MythicHospital = false       -- If you use that old injury script by mythic. (Added per request to reset injuries on respawn)
 Config.AdvancedParking = false      -- If you use AdvancedParking (Deletes vehicles with their exports)
-Config.FuelSystem = false           -- 'legacy' (LegacyFuel) / 'ox' (ox_fuel) / 'default'
+Config.FuelSystem = 'legacy'           -- 'legacy' (LegacyFuel) / 'ox' (ox_fuel) / 'default'
 
-Config.jobMenu = 'F6'               -- Default job menu key
+Config.jobMenu = 'F5'               -- Default job menu key
 Config.billingSystem = false        -- Current options: 'esx' (For esx_billing) / 'qb' (For qbcore users) 'okok' (For okokBilling) / 'pefcl' (For NPWD billing system) (Easy to add more in editable client - SET TO false IF UNDESIRED) or of course false to disable
 Config.targetSystem = true          -- Target system for targetting players, medbags, and stretcher(If disabled with replace with menus/3D text) (Compatible out of the box with qTarget, qb-target, and ox_target)
 
 Config.RespawnTimer = 5 * minutes   -- Time before optional respawn
 Config.BleedoutTimer = 20 * minutes -- Time before it forces respawn
 Config.ChargeForRevive = {
-    enabled = false,                -- Charge players to revive after the timer expires when they hold E to revive?
+    enabled = true,                -- Charge players to revive after the timer expires when they hold E to revive?
     cost = 500,                     -- Cost to revive if enabled
     payAccount = 'bank',            -- Account to pay from
     allowNegativeBalance = false    -- QB ONLY: Allow negative balance if player does not have enough money?
@@ -319,9 +319,9 @@ Config.keepItemsOnDeath = {
     }
 }
 Config.AntiCombatLog = { --  When enabled will kill player who logged out while dead
-    enabled = true,      --  enabled?
+    enabled = false,      --  enabled?
     notification = {
-        enabled = true,  -- enabled notify of wrong-doings??
+        enabled = false,  -- enabled notify of wrong-doings??
         title = 'Logged While Dead',
         desc = 'You last left dead and now have returned dead'
     }
@@ -334,7 +334,7 @@ Config.CompleteDeath = { --DOES NOT APPLY TO QBCORE --  When enabled players can
 }
 
 Config.Bandages = {
-    enabled = false,       -- Useable bandages? (Leave false if ox_inventory because they're built in)
+    enabled = true,       -- Useable bandages? (Leave false if ox_inventory because they're built in)
     item = 'bandage',      -- YOU MUST ADD THIS ITEM TO YOUR ITEMS, IT DOES NOT COME IN INSTALLATION(COMES WITH QBCORE BY DEFAULT AS ITEM)
     hpRegen = 30,          -- Percentage of health it replenishes (30% by default)
     healBleed = false,     -- Heal bleed that is inflicted by injury system? (Requires injury system enabled)
@@ -361,7 +361,7 @@ Config.EMSItems = {
 }
 
 Config.ReviveRewards = {
-    enabled = true,           -- Enable cash rewards for reviving
+    enabled = false,           -- Enable cash rewards for reviving
     paymentAccount = 'money', -- If you have old ESX 1.1 you may need to switch to 'cash'
     no_injury = 4000,         -- If above enabled, how much reward for fully treated patient with no injury in diagnosis
     burned = 3000,            -- How much if player is burned and revived without being treated
@@ -454,12 +454,12 @@ Config.Locations = {
             Coords = vec3(324.15, -583.14, 44.20),
             Sprite = 61,
             Color = 2,
-            Scale = 1.0,
+            Scale = 0.8,
             String = 'Pillbox Hospital'
         },
 
         clockInAndOut = {
-            enabled = true,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
+            enabled = false,                       -- Enable clocking in and out at a set location? (If using ESX you must have a off duty job for Config.ambulanceJob with same grades - example in main _install_first directory)
             coords = vec3(334.75, -580.24, 43.28), -- Location of where to go on and off duty(If not using target)
             label = '[E] - Go On/Off Duty',        -- Text to display(If not using target)
             distance = 3.0,                        -- Distance to display text UI(If not using target)
@@ -498,7 +498,7 @@ Config.Locations = {
 
 
         BossMenu = {
-            Enabled = true,                        -- Enabled boss menu?
+            Enabled = false,                        -- Enabled boss menu?
             Coords = vec3(335.59, -594.33, 43.21), -- Location of boss menu (If not using target)
             Label = '[E] - Access Boss Menu',      -- Text UI label string (If not using target)
             Distance = 2.5,                        -- Distance to allow access/prompt with text UI (If not using target)
@@ -567,7 +567,7 @@ Config.Locations = {
         },
 
         Cloakroom = {
-            Enabled = true,
+            Enabled = false,
             Coords = vec3(300.6, -597.7, 42.1), -- Coords of cloakroom
             Label = '[E] - Change Clothes',     -- String of text ui of cloakroom
             HotKey = 38,                        -- Default: 38 (E)
@@ -653,7 +653,7 @@ Config.Locations = {
         },
 
         MedicalSupplies = {                                                     -- EMS Shop for supplies
-            Enabled = true,                                                     -- If set to false, rest of this table do not matter
+            Enabled = false,                                                     -- If set to false, rest of this table do not matter
             Ped = 's_m_m_doctor_01',                                            -- Ped to target
             Coords = vec3(306.63, -601.44, 43.28 - 0.95),                       -- Coords of ped/target
             Heading = 337.64,                                                   -- Heading of ped
@@ -671,7 +671,7 @@ Config.Locations = {
         },
 
         Vehicles = {                                   -- Vehicle Garage
-            Enabled = true,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
+            Enabled = false,                            -- Enable? False if you have you're own way for medics to obtain vehicles.
             Zone = {
                 coords = vec3(298.54, -606.79, 43.27), -- Area to prompt vehicle garage
                 range = 5.5,                           -- Range it will prompt from coords above
