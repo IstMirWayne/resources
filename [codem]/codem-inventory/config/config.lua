@@ -5,7 +5,7 @@ Config.Language                       = 'en'       -- Check locales folder for a
 Config.SQL                            = "oxmysql"  -- oxmysql, ghmattimysql, mysql-async
 Config.InteractionHandler             = "drawtext" -- drawtext , qb-target , ox-target
 Config.ServerLogo                     =
-"https://cdn.discordapp.com/attachments/1025789416456867961/1106324039808594011/512x512_Logo.png?ex=6605d98d&is=65f3648d&hm=4c50c51ca9daaa45ef0bd4e7e4db0a76877a42a8f35e572830fa6e3b1bd8c5ca&"
+"https://i.ibb.co/XZfKBTVK/code3logo.png"
 
 Config.MaxWeight                      = 100000 -- Max weight that player can carry 100 kg
 Config.MaxSlots                       = 35     -- Max slots that player can carry
@@ -58,8 +58,9 @@ Config.NotRobItem = {
 }
 --- for jobs that you don't want to be robbed
 Config.NotRobJob = {
-    ['police'] = true,
-    ['ambulance'] = true
+    ['sast'] = true,
+    ['bcso'] = true,
+    ['lspd'] = true
 }
 
 
@@ -90,24 +91,26 @@ Config.Commands = {
 }
 
 Config.ContextMenuData = {
-    { name = 'use',  label = 'Use Item',  icon = 'useitemicon' },
-    { name = 'give', label = 'Give Item', icon = 'giveitemicon' },
-    { name = 'drop', label = 'Drop Item', icon = 'dropitemicon' },
+    { name = 'use',  label = 'Benutzen',     icon = 'useitemicon' },
+    { name = 'give', label = 'Geben',        icon = 'giveitemicon' },
+    { name = 'drop', label = 'Fallenlassen', icon = 'dropitemicon' },
 }
+
 Config.AdjustmentsData = {
-    { name = 'soundfx',      label = 'Sound FX',       value = true },
-    { name = 'hoverinfo',    label = 'Hover Info',     value = true },
-    { name = 'infoonbottom', label = 'Info on Bottom', value = true },
-    { name = 'lights',       label = 'Lights',         value = true },
+    { name = 'soundfx',      label = 'Soundeffekte',         value = true },
+    { name = 'hoverinfo',    label = 'Info bei Hover',       value = true },
+    { name = 'infoonbottom', label = 'Info unten anzeigen',  value = true },
+    { name = 'lights',       label = 'Beleuchtung',          value = true },
 }
 
 Config.Category = {
-    { name = 'all',       label = 'All Items', icon = 'allitemsicon' },
-    { name = 'weapon',    label = 'Weapons',   icon = 'weaponicon' },
-    { name = 'food',      label = 'Foods',     icon = 'foodicon' },
-    { name = 'craftable', label = 'Craftable', icon = 'craftableicon' },
-    { name = 'clothes',   label = 'Clothes',   icon = 'clothesicon' }
+    { name = 'all',       label = 'Alle Gegenstände', icon = 'allitemsicon' },
+    { name = 'weapon',    label = 'Waffen',           icon = 'weaponicon' },
+    { name = 'food',      label = 'Lebensmittel',     icon = 'foodicon' },
+    { name = 'craftable', label = 'Herstellbar',      icon = 'craftableicon' },
+    { name = 'clothes',   label = 'Kleidung',         icon = 'clothesicon' }
 }
+
 
 Config.Stashs = {
     ["policestash"] = {
