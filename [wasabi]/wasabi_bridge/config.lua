@@ -12,7 +12,7 @@ Config.CheckForUpdates = true
 --- UI Settings (Only works if using built-in systems) ---
 ----------------------------------------------------------
 
-Config.DefaultColor = '#218988' -- Default color for progress bars, circles, menus, etc if not defined when used.
+Config.DefaultColor = 'FF3414CF' -- Default color for progress bars, circles, menus, etc if not defined when used.
 -- (Most of the time there will be configuration of color within specific Wasabi Scripts, but this is a fallback)
 -- (If you wish to use this color as default in other Wasabi Scripts set their UI color to false if applicable)
 

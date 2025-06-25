@@ -15,7 +15,7 @@ Config.VideoID = 'tJmkCz7UYm8' -- Only used if UseLocalVideo is set to false (if
 
 Config.AddBlurToBackground = true               -- Add blur to the background image/video
 
-Config.MainColor = '#3bf5c8'                    -- Main color used for the whole UI
+Config.MainColor = 'FF1D26D9'                    -- Main color used for the whole UI
 
 Config.DelayOnStaffSlides = 5                   -- Delay on staff slides in seconds
 
