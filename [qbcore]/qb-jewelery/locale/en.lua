@@ -1,18 +1,18 @@
 local Translations = {
     error = {
-        fingerprints = 'You\'ve left a fingerprint on the glass',
-        minimum_police = 'Minimum of %{value} police needed',
-        wrong_weapon = 'Your weapon is not strong enough..',
-        to_much = 'You have to much in your pocket'
+        fingerprints = 'Du hast Fingerabdrücke am Glas hinterlassen...',
+        minimum_police = '%{value} Polizisten benötigt',
+        wrong_weapon = 'Deine Waffe ist nicht stark genug..',
+        to_much = 'Du hast zu viel in deinen Taschen!'
     },
     success = {},
     info = {
-        progressbar = 'Smashing the display case',
+        progressbar = 'Glas brechen',
     },
     general = {
-        target_label = 'Smash the display case',
-        drawtextui_grab = '[E] Smash the display case',
-        drawtextui_broken = 'Display case is broken'
+        target_label = 'Vitrine aufbrechen',
+        drawtextui_grab = '~o~[~b~E~o~]~w~ um aufzubrechen',
+        drawtextui_broken = 'AUFGEBROCHEN'
     }
 }
 
