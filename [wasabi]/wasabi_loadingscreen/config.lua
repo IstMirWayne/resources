@@ -44,18 +44,30 @@ Config.Translations = {
 
 Config.Updates = {
     [1] = {
+        title = "Patchnote #4",
+        date = "25. Juni 2025",
+        name = "Systembereinigung & Übersetzungen",
+        description = "Das Voice-System wurde angepasst. Übersetzungen für Inventory, Jewelry, Management und Policejob wurden ergänzt. Ein neues Fuel-System wurde implementiert. Zudem wurden mehrere alte Module entfernt (qb-garages, qb-inventory, qb-recyclejob, qb-scoreboard, qb-scrapyard) und Blips überarbeitet sowie lokalisiert."
+    },
+    [2] = {
+        title = "Patchnote #3.1",
+        date = "24. Juni 2025",
+        name = "Ressourcen & Audio",
+        description = "Eigene Waffensounds von Lukas wurden integriert. Zusätzlich wurde wasabi_ambulance hinzugefügt und erneut hochgeladen."
+    },
+    [3] = {
         title = "Patchnote #3",
         date = "21. Juni 2025",
         name = "Performance & visuelle Verbesserungen",
         description = "Ein neuer Ladebildschirm wurde hinzugefügt. Das Banking-System wurde komplett überarbeitet. Unnötige Scripts wurden entfernt. Zudem gab es Performance-Verbesserungen, verbesserte Straßentexturen und einige UI-Elemente wurden farblich angepasst."
     },
-    [2] = {
+    [4] = {
         title = "Patchnote #2",
         date = "20. Juni 2025",
         name = "Kleidung & Jobs",
         description = "Ein neues Kleidersystem wurde implementiert. Zusätzlich gibt es neue LSPD-Kleidung. Das Jobsystem wurde überarbeitet für mehr Flexibilität und Stabilität."
     },
-    [3] = {
+    [5] = {
         title = "Patchnote #1",
         date = "19. Juni 2025",
         name = "FivePD Konfiguration",
