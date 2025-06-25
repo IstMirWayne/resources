@@ -7,7 +7,7 @@ Config = Config or {}
 -- ██║░░░░░██║░░██║██║░░██║██║░╚═╝░██║███████╗░░╚██╔╝░╚██╔╝░╚█████╔╝██║░░██║██║░╚██╗
 -- ╚═╝░░░░░╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝░░░╚═╝░░░╚═╝░░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝
 
-Config.Framework = 'standalone' -- You can choose between 'esx', 'qb', 'standalone', 'autodetect'
+Config.Framework = 'qb' -- You can choose between 'esx', 'qb', 'standalone', 'autodetect'
 
 -- ░██████╗░███████╗███╗░░██╗███████╗██████╗░░█████╗░██╗░░░░░
 -- ██╔════╝░██╔════╝████╗░██║██╔════╝██╔══██╗██╔══██╗██║░░░░░
@@ -20,7 +20,7 @@ Config.InteractionHandler = 'drawtext' -- 'drawtext', 'ox-target', 'qb-target' e
 Config.CodemTextUI        = false      -- true, false
 
 Config.defaultVehicleImage = 'vehicleImages/togg.png' -- Default image for vehicles that don't have image.
-Config.defaultVehicleName = 'Unkown' -- Default name for vehicles that don't have name.
+Config.defaultVehicleName = 'UNBEKANNT' -- Default name for vehicles that don't have name.
 
 Config.Prices = {
     ['DIESEL'] = 10,
@@ -40,11 +40,11 @@ Config.showNearestBlips = false
 Config.showAllBlips = true
 Config.blipSettings = {
     sprite = 361,
-    scale = 0.7,
+    scale = 0.8,
     color = 4,
     display = 4,
     shortRange = true,
-    name = 'Gas Station'
+    name = 'Tankstelle'
 }
 
 Config.Locations = {
@@ -166,25 +166,25 @@ Config.blacklistedVehicles = {
 -- ╚══════╝░╚════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═════╝░
 
 Config.Locales = {
-    ['CURRENCY'] = "$",
-    ['MENU_NAME'] = "Fuel System",
-    ['MODEL'] = "MODEL",
-    ['CAR_PLATE'] = "YOUR CAR PLATE",
+    ['CURRENCY'] = "€",
+    ['MENU_NAME'] = "Los Santos Storys Tankstelle",
+    ['MODEL'] = "MODELL",
+    ['CAR_PLATE'] = "KENNZEICHEN",
     ['TEMP'] = "Temp",
-    ['SPEED'] = "Speed",
-    ['FUEL_TYPE'] = "Fuel Type",
+    ['SPEED'] = "Tempo",
+    ['FUEL_TYPE'] = "KRAFTSTOFF",
     ['LITER'] = "LITER",
     ['DIESEL'] = "DIESEL",
-    ['ECONOMIC'] = "ECONOMIC",
+    ['ECONOMIC'] = "E10",
     ['SUPER'] = "SUPER",
-    ['SUPER_P'] = "SUPER +",
-    ['TOTAL_PRICE'] = "TOTAL PRICE FOR:",
-    ['PAYMENT_METHOD'] = "PAYMENT METHOD",
-    ['PAYMENT_BUTTON'] = "PAYMENT BUTTON",
-    ['PURCHASE'] = 'PURCHASE',
-    ['GRAB_NOZZLE'] = 'Grab Nozzle',
-    ['PUT_NOZZLE'] = 'Put Nozzle Back',
-    ['ATTACH_NOZZLE'] = '[E] Attach Nozzle',
+    ['SUPER_P'] = "SUPER PLUS",
+    ['TOTAL_PRICE'] = "GESAMTPREIS:",
+    ['PAYMENT_METHOD'] = "BEZAHLMETHODE",
+    ['PAYMENT_BUTTON'] = "ZAHLUNGSBESTÄTIGUNG",
+    ['PURCHASE'] = 'BEZAHLEN',
+    ['GRAB_NOZZLE'] = 'Zapfhahn nehmen',
+    ['PUT_NOZZLE'] = 'Zapfhahn einhängen',
+    ['ATTACH_NOZZLE'] = '[E] Tanken',
 }
 
 -- ███╗░░██╗░█████╗░████████╗██╗███████╗██╗░█████╗░░█████╗░████████╗██╗░█████╗░███╗░░██╗░██████╗
@@ -196,7 +196,7 @@ Config.Locales = {
 
 Config.NotificationText = {
     ['enoughmnoney'] = {
-        text = "Not enough money for the purchase",
+        text = "Nicht genug Geld",
         type = "error"
     }
 }
