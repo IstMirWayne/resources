@@ -302,7 +302,7 @@ RegisterNetEvent('police:client:ImpoundVehicle', function(fullImpound, price)
     local vehicle = QBCore.Functions.GetClosestVehicle()
     local bodyDamage = math.ceil(GetVehicleBodyHealth(vehicle))
     local engineDamage = math.ceil(GetVehicleEngineHealth(vehicle))
-    local totalFuel = exports[Config.FuelResource]:GetFuel(vehicle)
+    local totalFuel = exports['x-fuel']:GetFuel(vehicle)
     if vehicle ~= 0 and vehicle then
         local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)

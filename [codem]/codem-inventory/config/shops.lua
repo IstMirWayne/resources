@@ -16,7 +16,7 @@ Config.Shops = {
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 1,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
         job = {
@@ -41,146 +41,146 @@ Config.Shops = {
         coords = vector3(458.02, -979.17, 30.69)
     },
     ["market"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(25.65, -1346.6, 29.5),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market2"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(547.85, 2670.77, 42.16),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market3"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(1960.94, 3741.09, 32.34),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market4"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(-3040.04, 585.45, 7.91),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market5"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(-3242.85, 1001.27, 12.83),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market6"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(-2967.84, 391.34, 15.04),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market7"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(-1487.53, -378.72, 40.16),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market8"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(-707.36, -913.96, 19.22),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market9"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(-47.94, -1757.37, 29.42),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market10"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(1163.46, -323.09, 69.21),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market11"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(373.95, 326.73, 103.57),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     },
     ["market12"] = {
-        label = "Market",
+        label = "24/7",
         job = 'all',
         items = ShopItems,
         coords = vector3(375.3, 325.79, 103.57),
         Blip = {
             enable = true, -- show blip = true  -- hide blip false
             id = 52,
-            scale = 0.5,
+            scale = 0.8,
             color = 5,
         },
     }
