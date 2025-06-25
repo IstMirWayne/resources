@@ -1,81 +1,63 @@
 voiceData = {}
 radioData = {}
 callData = {}
-mumbleConfig = {
-	debug = false, -- enable debug msgs
-	voiceModes = {
-		{2.5, "Whisper"}, -- Whisper speech distance in gta distance units
-		{8.0, "Normal"}, -- Normal speech distance in gta distance units
-		{20.0, "Shouting"}, -- Shout speech distance in gta distance units
-	},
-	speakerRange = 1.5, -- Speaker distance in gta distance units (how close you need to be to another player to hear other players on the radio or phone)
-	callSpeakerEnabled = true, -- Allow players to hear all talking participants of a phone call if standing next to someone that is on the phone
-	radioEnabled = true, -- Enable or disable using the radio
-	micClicks = true, -- Are clicks enabled or not
-	micClickOn = true, -- Is click sound on active
-	micClickOff = true, -- Is click sound off active
-	micClickVolume = 0.1, -- How loud a mic click is
-	radioClickMaxChannel = 100, -- Set the max amount of radio channels that will have local radio clicks enabled
-	controls = { -- Change default key binds
-		proximity = {
-			key = 20, -- Z
-		}, -- Switch proximity mode
-		radio = {
-			pressed = false, -- don't touch
-			key = 137, -- capital
-		}, -- Use radio
-		speaker = {
-			key = 20, -- Z
-			secondary = 21, -- LEFT SHIFT
-		} -- Toggle speaker mode (phone calls)
-	},
-	radioChannelNames = { -- Add named radio channels (Defaults to [channel number] MHz)
-		[1] = "LEO Tac 1",
-		[2] = "LEO Tac 2",
-		[3] = "EMS Tac 1",
-		[4] = "EMS Tac 2",
-		[500] = "Hurr Durr 500 Hurr Durr",
-	},
-	callChannelNames = { -- Add named call channels (Defaults to [channel number])
 
+mumbleConfig = {
+	debug = false, -- Debug-Nachrichten aktivieren
+	voiceModes = {
+		{2.5, "Flüstern"},   -- Flüstermodus: Sprachreichweite in GTA-Einheiten
+		{8.0, "Normal"},     -- Normalmodus: Sprachreichweite in GTA-Einheiten
+		{20.0, "Schreien"},  -- Schreimodus: Sprachreichweite in GTA-Einheiten
 	},
-	use3dAudio = true, -- Enable 3D Audio
-	useSendingRangeOnly = true, -- Use sending range only for proximity voice (don't recommend setting this to false)
-	useNativeAudio = false, -- Use native audio (audio occlusion in interiors)
-	useExternalServer = false, -- Use an external voice server (bigger servers need this), tutorial: https://forum.cfx.re/t/how-to-host-fivems-voice-chat-mumble-in-another-server/1487449?u=frazzle
-	externalAddress = "127.0.0.1",
-	externalPort = 30120,
-	use2dAudioInVehicles = true, -- Workaround for hearing vehicle passengers at high speeds
-	showRadioList = true, -- Optional feature to show a list of players in a radio channel, to be used with server export `SetPlayerRadioName`
+	speakerRange = 1.5, -- Reichweite des Lautsprechermodus (z. B. für Funk oder Telefon)
+	callSpeakerEnabled = true, -- Umstehende können Telefonate mithören, wenn sie nah genug stehen
+	radioEnabled = true, -- Funkgerät aktivieren oder deaktivieren
+	micClicks = true, -- Mikrofonklick-Geräusche aktivieren
+	micClickOn = true, -- Mikrofonklick bei Aktivierung
+	micClickOff = true, -- Mikrofonklick bei Deaktivierung
+	micClickVolume = 0.1, -- Lautstärke der Mikrofonklicks
+	radioClickMaxChannel = 100, -- Maximaler Funkkanal mit lokalen Klickgeräuschen
+	controls = {
+		proximity = {
+			key = 20, -- Taste Z
+		}, -- Sprachreichweite wechseln
+		radio = {
+			pressed = false, -- nicht ändern
+			key = 137, -- Feststelltaste
+		}, -- Funk verwenden
+		speaker = {
+			key = 20, -- Taste Z
+			secondary = 21, -- Linke Umschalttaste
+		} -- Lautsprechermodus (Telefon)
+	},
+	radioChannelNames = {
+		[1] = "Polizei Tac 1",
+		[2] = "Polizei Tac 2",
+		[3] = "Rettung Tac 1",
+		[4] = "Rettung Tac 2",
+		[500] = "Testkanal 500",
+	},
+	callChannelNames = {
+		-- Anrufkanäle benennen (optional)
+	},
+	use3dAudio = true, -- 3D-Audio aktivieren
+	useSendingRangeOnly = true, -- Nur Sendereichweite berücksichtigen (empfohlen)
+	useNativeAudio = false, -- Native Audio-Funktion (z. B. Innenräume)
+	useExternalServer = false, -- Externen Sprachserver verwenden
+	externalAddress = "127.0.0.1", -- IP-Adresse des externen Servers
+	externalPort = 30120, -- Port des externen Servers
+	use2dAudioInVehicles = true, -- 2D-Audio im Fahrzeug bei hohen Geschwindigkeiten aktivieren
+	showRadioList = true, -- Spieler im Funkkanal anzeigen
 }
+
 resourceName = GetCurrentResourceName()
+
 phoneticAlphabet = {
-	"Alpha",
-	"Bravo",
-	"Charlie",
-	"Delta",
-	"Echo",
-	"Foxtrot",
-	"Golf",
-	"Hotel",
-	"India",
-	"Juliet",
-	"Kilo",
-	"Lima",
-	"Mike",
-	"November",
-	"Oscar",
-	"Papa",
-	"Quebec",
-	"Romeo",
-	"Sierra",
-	"Tango",
-	"Uniform",
-	"Victor",
-	"Whisky",
-	"XRay",
-	"Yankee",
-	"Zulu",
+	"Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot",
+	"Golf", "Hotel", "India", "Juliet", "Kilo", "Lima",
+	"Mike", "November", "Oscar", "Papa", "Quebec", "Romeo",
+	"Sierra", "Tango", "Uniform", "Victor", "Whisky", "XRay",
+	"Yankee", "Zulu"
 }
 
 if IsDuplicityVersion() then
@@ -91,7 +73,7 @@ else
 		end
 	end
 
-	-- Update config properties from another script
+	-- Konfiguration von außerhalb anpassen
 	function SetMumbleProperty(key, value)
 		if mumbleConfig[key] ~= nil and mumbleConfig[key] ~= "controls" and mumbleConfig[key] ~= "radioChannelNames" then
 			mumbleConfig[key] = value
@@ -102,6 +84,7 @@ else
 		end
 	end
 
+	-- Namen für Funkkanäle setzen
 	function SetRadioChannelName(channel, name)
 		local channel = tonumber(channel)
 
@@ -112,6 +95,7 @@ else
 		end
 	end
 
+	-- Namen für Anrufkanäle setzen
 	function SetCallChannelName(channel, name)
 		local channel = tonumber(channel)
 
@@ -122,19 +106,20 @@ else
 		end
 	end
 
-	-- Make exports available on first tick
+	-- Exportfunktionen registrieren
 	exports("SetMumbleProperty", SetMumbleProperty)
 	exports("SetTokoProperty", SetMumbleProperty)
 	exports("SetRadioChannelName", SetRadioChannelName)
 	exports("SetCallChannelName", SetCallChannelName)
 end
 
+-- Zufälliger Buchstabe aus dem phonetischen Alphabet
 function GetRandomPhoneticLetter()
 	math.randomseed(GetGameTimer())
-
 	return phoneticAlphabet[math.random(1, #phoneticAlphabet)]
 end
 
+-- Spieler in bestimmtem Funkkanal erhalten
 function GetPlayersInRadioChannel(channel)
 	local channel = tonumber(channel)
 	local players = false
@@ -148,6 +133,7 @@ function GetPlayersInRadioChannel(channel)
 	return players
 end
 
+-- Spieler aus mehreren Funkkanälen erhalten
 function GetPlayersInRadioChannels(...)
 	local channels = { ... }
 	local players = {}
@@ -165,10 +151,12 @@ function GetPlayersInRadioChannels(...)
 	return players
 end
 
+-- Alle Funkkanäle und ihre Spieler zurückgeben
 function GetPlayersInAllRadioChannels()
 	return radioData
 end
 
+-- Spieler, die sich im gleichen Funkkanal wie ein anderer Spieler befinden
 function GetPlayersInPlayerRadioChannel(serverId)
 	local players = false
 
@@ -186,6 +174,7 @@ function GetPlayersInPlayerRadioChannel(serverId)
 	return players
 end
 
+-- Funkkanal eines Spielers abfragen
 function GetPlayerRadioChannel(serverId)
 	if serverId ~= nil then
 		if voiceData[serverId] ~= nil then
@@ -194,6 +183,7 @@ function GetPlayerRadioChannel(serverId)
 	end
 end
 
+-- Anrufkanal eines Spielers abfragen
 function GetPlayerCallChannel(serverId)
 	if serverId ~= nil then
 		if voiceData[serverId] ~= nil then
@@ -202,6 +192,7 @@ function GetPlayerCallChannel(serverId)
 	end
 end
 
+-- Exporte für Zugriff von anderen Ressourcen
 exports("GetPlayersInRadioChannel", GetPlayersInRadioChannel)
 exports("GetPlayersInRadioChannels", GetPlayersInRadioChannels)
 exports("GetPlayersInAllRadioChannels", GetPlayersInAllRadioChannels)
