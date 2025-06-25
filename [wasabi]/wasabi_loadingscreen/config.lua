@@ -47,7 +47,7 @@ Config.Updates = {
         title = "Patchnote #4",
         date = "25. Juni 2025",
         name = "Systembereinigung & Übersetzungen",
-        description = "Das Voice-System wurde angepasst. Übersetzungen für Inventory, Jewelry, Management und Policejob wurden ergänzt. Ein neues Fuel-System wurde implementiert. Zudem wurden mehrere alte Module entfernt (qb-garages, qb-inventory, qb-recyclejob, qb-scoreboard, qb-scrapyard) und Blips überarbeitet sowie lokalisiert."
+        description = "Das Voice-System wurde angepasst. Übersetzungen für neues Inventory, Jewelry, Management und Policejob wurden ergänzt. Ein neues Fuel-System wurde implementiert. Zudem wurden mehrere alte Module entfernt (qb-garages, qb-inventory, qb-recyclejob, qb-scoreboard, qb-scrapyard) und Blips überarbeitet sowie lokalisiert."
     },
     [2] = {
         title = "Patchnote #3.1",
